@@ -25,6 +25,8 @@ module.exports = {
     },
     port: 3000,
     hot: true,
+    watchFiles: ["src"],
+    liveReload: true,
     compress: true,
     historyApiFallback: true,
   },
