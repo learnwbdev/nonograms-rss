@@ -3,8 +3,12 @@ module.exports = {
   env: {
     commonjs: true,
     es6: true,
+    es2023: true,
     node: true,
     browser: true,
+  },
+  parserOptions: {
+    ecmaVersion: 2023,
   },
   rules: {
     "prettier/prettier": [
