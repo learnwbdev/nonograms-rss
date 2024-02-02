@@ -1,0 +1,202 @@
+[
+  {
+    "id": 0,
+    "level": "easy",
+    "size": [
+      5,
+      5
+    ],
+    "name": "bat",
+    "puzzle": "5.5.efefef11efeffe3f"
+  },
+  {
+    "id": 1,
+    "level": "easy",
+    "size": [
+      5,
+      5
+    ],
+    "name": "dog",
+    "puzzle": "5.5.e3fefef3ef3eefefeefefe"
+  },
+  {
+    "id": 2,
+    "level": "easy",
+    "size": [
+      5,
+      5
+    ],
+    "name": "rune",
+    "puzzle": "5.5.effe4feef6efef4ee"
+  },
+  {
+    "id": 3,
+    "level": "easy",
+    "size": [
+      5,
+      5
+    ],
+    "name": "shuriken",
+    "puzzle": "5.5.feef6eefefeef6eef"
+  },
+  {
+    "id": 4,
+    "level": "easy",
+    "size": [
+      5,
+      5
+    ],
+    "name": "snowflake",
+    "puzzle": "5.5.fefefef3effeffef3efefef"
+  },
+  {
+    "id": 5,
+    "level": "easy",
+    "size": [
+      5,
+      5
+    ],
+    "name": "tortoise",
+    "puzzle": "5.5.e6f3ef10efefe"
+  },
+  {
+    "id": 6,
+    "level": "medium",
+    "size": [
+      10,
+      10
+    ],
+    "name": "cherries",
+    "puzzle": "10.10.e4f3e5f4efe3fefeffefef3eefef3e5fe6f3ef3eef5ef3ef3efefefef5ef3eef3ef3e"
+  },
+  {
+    "id": 7,
+    "level": "medium",
+    "size": [
+      10,
+      10
+    ],
+    "name": "leaf",
+    "puzzle": "10.10.e4f6e3fefefefeeffefeffeefefeffefeefefef4eefeffe3feef8e3fe4fe3fef4e3ffe8"
+  },
+  {
+    "id": 8,
+    "level": "medium",
+    "size": [
+      10,
+      10
+    ],
+    "name": "mouse",
+    "puzzle": "10.10.eeffe3ffeefeefefeefefef5efeeffefeffe4f5e4f3ef3efef9ef9ef8ef8e"
+  },
+  {
+    "id": 9,
+    "level": "medium",
+    "size": [
+      10,
+      10
+    ],
+    "name": "notes",
+    "puzzle": "10.10.e6f4e3f3e3fe3fe3f3e3f4eefe3fe5fe3fe3f3ef3eef8eef8e3ffeeffe7"
+  },
+  {
+    "id": 10,
+    "level": "medium",
+    "size": [
+      10,
+      10
+    ],
+    "name": "snail",
+    "puzzle": "10.10.eef4e5ffef3e3f4ef3eefef3effeef5effeef4effe3f7efef6e3fef18e"
+  },
+  {
+    "id": 11,
+    "level": "medium",
+    "size": [
+      10,
+      10
+    ],
+    "name": "tree",
+    "puzzle": "10.10.eef6e3f4ef3ef5ef6ef3eef5ef5eef5e8f3e7ffe5feeffe3f11"
+  },
+  {
+    "id": 12,
+    "level": "hard",
+    "size": [
+      15,
+      15
+    ],
+    "name": "castle",
+    "puzzle": "15.15.e6fe14ffe13f3e6ffeffefe3ffef7efe3f6e3fefe3fe3ffefefefe3fefeffefef7efeffe13ffeefe7feeffef3eefeef3effeefeef3eefeeffeefeef3eefeeffe5f3e5f16"
+  },
+  {
+    "id": 13,
+    "level": "hard",
+    "size": [
+      15,
+      15
+    ],
+    "name": "clover",
+    "puzzle": "15.15.e5ffeffe9f7e8f7e8f7e5f3ef5ef3ef5ef3ef11efef6ef6ef6ef6efef11eefeef5ef3e3fe3f3e7ffe12ffe10f4e11ffe11"
+  },
+  {
+    "id": 14,
+    "level": "hard",
+    "size": [
+      15,
+      15
+    ],
+    "name": "deer",
+    "puzzle": "15.15.ffeffe6ffef3effefeefeffefef4efeefeffefeef5e3f5e4ffef5e9f7e7fefef5e5f11e3f12eef13ef8ef5efef3e4f5ef5e4f5eef3e4f6e9f6"
+  },
+  {
+    "id": 15,
+    "level": "hard",
+    "size": [
+      15,
+      15
+    ],
+    "name": "dolphin",
+    "puzzle": "15.15.e6ffe14ffe10f9e4f10efeef12ef23effef7e4ffe3ffeffe11fefe14ffe11ffefe5ffefefefe3ffeffefeffe4feeffeffef3ef3ef3ef3ef3"
+  },
+  {
+    "id": 16,
+    "level": "hard",
+    "size": [
+      15,
+      15
+    ],
+    "name": "duck",
+    "puzzle": "15.15.e9f3e11f5e9f4ef3e7f7e9f5e11f3e11f5eefe5f8ef3eef3e3f3ef7ef3effeef5ef4effeef8eeffe4f10e7ffef3e11f6e3"
+  },
+  {
+    "id": 17,
+    "level": "hard",
+    "size": [
+      15,
+      15
+    ],
+    "name": "house",
+    "puzzle": "15.15.e14fe11ffe6fe14ffe3ffe8fe4ffe7f9e5f5efefefe3f7efefefef15efe11feefef3e4ffefeefef3effeffefeefe5ffe4feefe5ffe4fef15"
+  },
+  {
+    "id": 18,
+    "level": "hard",
+    "size": [
+      15,
+      15
+    ],
+    "name": "pelican",
+    "puzzle": "15.15.e7f4e5f7efefe3ffe5f3efe3fe4f3e3fe3fef3eefeef3eef3eeffeffe8ffeefeef3e4ffeefeffeeffeefe3f3e3feffefeeffe4ffeefeefeef6e3fe3ffe7fefe5f8ef3e5fefe3f6ef6e4"
+  },
+  {
+    "id": 19,
+    "level": "hard",
+    "size": [
+      15,
+      15
+    ],
+    "name": "swan",
+    "puzzle": "15.15.f10e3f11e5f10eef13ef5effeef5ef5eefe4ffef6eeffe3ffef5efeeffeffeef5effeefeffeef4e3ffefeefef4effeefe3fefeffe3ffefeefeffe11fef3e11f17"
+  }
+]
