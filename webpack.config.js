@@ -75,6 +75,10 @@ module.exports = {
           from: path.resolve("src/assets/images/favicon"),
           to: path.resolve("dist/assets/images/favicon"),
         },
+        {
+          from: path.resolve("src/assets/sounds"),
+          to: path.resolve("dist/assets/sounds"),
+        },
       ],
     }),
     new ESLintPlugin(),
