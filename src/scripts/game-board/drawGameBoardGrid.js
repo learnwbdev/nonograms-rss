@@ -46,10 +46,19 @@ export const drawGameBoardGrid = (
       coordShiftPx;
     return lineCoordPx;
   };
+
   const getLineWidth = (lineIndex, dividerShift) => {
     return isDivider(lineIndex, dividerShift) ? dividerWidthPx : lineWidthPx;
   };
-  const drawLine = (x0, y0, x1, y1, lineWidth) => {
+
+  const getLineColor = (lineIndex, dividerShift) => {
+    return isDivider(lineIndex, dividerShift)
+      ? boardSettings.dividerColor
+      : boardSettings.lineColor;
+  };
+
+  const drawLine = (x0, y0, x1, y1, lineWidth, lineColor) => {
+    ctx.strokeStyle = lineColor;
     ctx.beginPath();
     ctx.lineWidth = lineWidth;
     ctx.moveTo(x0, y0);
@@ -64,7 +73,8 @@ export const drawGameBoardGrid = (
       const yTop = i === 0 ? boardTopEdge : board.cluesHeight;
       const x = getLineCoordinate(i, dividerShift);
       const lineWidth = getLineWidth(i, dividerShift);
-      drawLine(x, yTop, x, yBottom, lineWidth);
+      const lineColor = getLineColor(i, dividerShift);
+      drawLine(x, yTop, x, yBottom, lineWidth, lineColor);
     }
   };
   const drawRowLinesForClues = (numRows, dividerShift) => {
@@ -74,7 +84,8 @@ export const drawGameBoardGrid = (
       const xLeft = i === 0 ? boardLeftEdge : board.cluesWidth;
       const y = getLineCoordinate(i, dividerShift);
       const lineWidth = getLineWidth(i, dividerShift);
-      drawLine(xLeft, y, xRight, y, lineWidth);
+      const lineColor = getLineColor(i, dividerShift);
+      drawLine(xLeft, y, xRight, y, lineWidth, lineColor);
     }
   };
   const drawColumnLinesForPlayArea = (numCols, dividerShift) => {
@@ -84,7 +95,8 @@ export const drawGameBoardGrid = (
     for (let i = 0; i <= numCols; i += 1) {
       const x = board.cluesWidth + getLineCoordinate(i, dividerShift);
       const lineWidth = getLineWidth(i, dividerShift);
-      drawLine(x, yTop, x, yBottom, lineWidth);
+      const lineColor = getLineColor(i, dividerShift);
+      drawLine(x, yTop, x, yBottom, lineWidth, lineColor);
     }
   };
   const drawRowLinesForPlayArea = (numRows, dividerShift) => {
@@ -94,7 +106,8 @@ export const drawGameBoardGrid = (
     for (let i = 0; i <= numRows; i += 1) {
       const y = board.cluesHeight + getLineCoordinate(i, dividerShift);
       const lineWidth = getLineWidth(i, dividerShift);
-      drawLine(xLeft, y, xRight, y, lineWidth);
+      const lineColor = getLineColor(i, dividerShift);
+      drawLine(xLeft, y, xRight, y, lineWidth, lineColor);
     }
   };
 
