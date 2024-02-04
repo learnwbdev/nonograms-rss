@@ -66,5 +66,11 @@ export const getGameBoardSize = (playAreaIn, cluesIn, boardSettings) => {
     clues.rows.lines * lineWidthPx +
     clues.rows.dividers * dividerWidthPx;
 
-  return { boardWidth, boardHeight, cluesWidth, cluesHeight };
+  const cntDividerInOneBlock = 1;
+  const blockSize =
+    divideNumCells * cellSizePx +
+    (divideNumCells - cntDividerInOneBlock) * lineWidthPx +
+    cntDividerInOneBlock * dividerWidthPx;
+
+  return { boardWidth, boardHeight, cluesWidth, cluesHeight, blockSize };
 };
