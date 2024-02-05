@@ -1,6 +1,7 @@
 import { decodePuzzle } from "./game/decodePuzzle";
 import { formPuzzleClues } from "./game/formPuzzleClues";
 import { GameBoard } from "./GameBoard";
+import { StopWatch } from "./StopWatch";
 
 export class Game {
   #nonogram = {};
@@ -9,10 +10,11 @@ export class Game {
 
   #isGameInProgress = false;
 
-  #gameDurationInSec = 0;
+  #stopWatch;
 
-  constructor(canvasClassName) {
-    this.#gameBoard = new GameBoard(canvasClassName);
+  constructor(canvasClassName, stopWatchClassName) {
+    this.#stopWatch = new StopWatch(stopWatchClassName);
+    this.#gameBoard = new GameBoard(canvasClassName, this.#stopWatch);
   }
 
   setNonogram(nonogram) {

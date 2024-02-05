@@ -18,8 +18,11 @@ export class PlayField {
 
   #boardCells;
 
-  constructor(gameBoard, puzzleMatrix, boardStateMatrix) {
+  #stopWatch;
+
+  constructor(gameBoard, puzzleMatrix, boardStateMatrix, stopWatch) {
     this.#gameBoard = gameBoard;
+    this.#stopWatch = stopWatch;
     this.#puzzleMatrix = puzzleMatrix;
     this.#numFilledCellsPuzzle = countFilledCellsInPuzzle(puzzleMatrix);
     if (isEmptyBoardStateMatrix(boardStateMatrix)) {
@@ -46,8 +49,9 @@ export class PlayField {
 
   #handleWinGame() {
     playSoundOnWin();
+    this.#stopWatch.stop();
     // TODO: show message
-    console.log("Win!", this.#numFilledCellsPuzzle, this.#sumCellsPlayField);
+    console.log("Win!");
   }
 
   handleAction(

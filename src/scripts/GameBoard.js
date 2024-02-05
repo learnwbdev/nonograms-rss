@@ -67,9 +67,14 @@ export class GameBoard {
 
   #hasEventListeners = false;
 
-  constructor(className) {
+  #stopWatch;
+
+  #isStopWatchStarted = false;
+
+  constructor(className, stopWatch) {
     this.#canvasNode = createGameBoardCanvas(className);
     this.#canvasContext = this.#canvasNode.getContext("2d");
+    this.#stopWatch = stopWatch;
   }
 
   #setTextStyleForClues() {
@@ -147,6 +152,10 @@ export class GameBoard {
       event.offsetY
     );
     if (isInsidePlayArea) {
+      if (!this.#isStopWatchStarted) {
+        this.#stopWatch.start();
+        this.#isStopWatchStarted = true;
+      }
       const xInPlayArea = event.offsetX - this.#board.cluesWidth;
       const yInPlayArea = event.offsetY - this.#board.cluesHeight;
       const idxRow = this.getCellIndexByCoord(yInPlayArea);
@@ -212,15 +221,17 @@ export class GameBoard {
       this,
       puzzleMatrix,
       boardStateMatrix,
-      this.#boardSettings.cellSizePx,
-      this.#boardSettings.lineWidthPx
+      this.#stopWatch
     );
     this.#addListeners();
     this.#isInPlayMode = true;
+    this.#stopWatch.initialize(false, 0);
   }
 
   drawSolution() {
     this.#isInPlayMode = false;
+    this.#stopWatch.stop();
+    this.#isStopWatchStarted = false;
     drawSolution(
       this.#canvasContext,
       this.#puzzleMatrix,
@@ -244,10 +255,10 @@ export class GameBoard {
       this,
       this.#puzzleMatrix,
       emptyBoardStateMatrix,
-      this.#boardSettings.cellSizePx,
-      this.#boardSettings.lineWidthPx
+      this.#stopWatch
     );
     this.#addListeners();
     this.#isInPlayMode = true;
+    this.#stopWatch.initialize(false, 0);
   }
 }
