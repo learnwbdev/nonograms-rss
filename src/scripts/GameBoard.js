@@ -228,7 +228,9 @@ export class GameBoard {
     );
     this.#addListeners();
     this.#isInPlayMode = true;
+    this.#stopWatch.stop();
     this.#stopWatch.initialize(false, 0);
+    this.#isStopWatchStarted = false;
   }
 
   drawSolution() {
@@ -262,7 +264,9 @@ export class GameBoard {
     );
     this.#addListeners();
     this.#isInPlayMode = true;
+    this.#stopWatch.stop();
     this.#stopWatch.initialize(false, 0);
+    this.#isStopWatchStarted = false;
   }
 
   addLatestWin() {
