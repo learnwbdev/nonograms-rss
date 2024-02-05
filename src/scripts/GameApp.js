@@ -61,6 +61,10 @@ export default class GameApp {
     this.changeGameToPuzzle(nonogramId);
   }
 
+  resetGame() {
+    this.#game.resetGame();
+  }
+
   static turnOffSoundEffects() {
     const isMuted = true;
     changeSoundsMuteValue(isMuted);

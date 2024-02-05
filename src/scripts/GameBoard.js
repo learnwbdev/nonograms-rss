@@ -9,6 +9,7 @@ import { PlayField } from "./PlayField";
 import { getCoordShiftByIndex } from "./game-board/getCoordShiftByIndex";
 import { getCellIndexByOneCoord } from "./game-board/getCellIndexByOneCoord";
 import { actionTypes } from "./actions/actionTypes";
+import { clearPlayField } from "./play-field/clearPlayField";
 
 export class GameBoard {
   #canvasNode;
@@ -62,6 +63,8 @@ export class GameBoard {
   #puzzleClues;
 
   #actions = actionTypes;
+
+  #hasEventListeners = false;
 
   constructor(className) {
     const canvasNode = document.createElement("canvas");
@@ -162,6 +165,9 @@ export class GameBoard {
   }
 
   #addListeners() {
+    if (this.#hasEventListeners) {
+      return;
+    }
     const canvasNode = this.#canvasNode;
     const actions = Object.values(this.#actions);
     actions.forEach((actionType) =>
@@ -172,6 +178,7 @@ export class GameBoard {
         }
       })
     );
+    this.#hasEventListeners = true;
   }
 
   getCellCoordByIndex(index) {
@@ -222,5 +229,27 @@ export class GameBoard {
       this.#board,
       this.#boardSettings
     );
+  }
+
+  resetGame() {
+    const emptyBoardStateMatrix = [];
+    clearPlayField(
+      this.#canvasContext,
+      this.#playArea.rectPath,
+      this.#boardSettings.emptyCellBg
+    );
+    this.#drawBoardGrid();
+    this.#setTextStyleForClues();
+    this.#setTextBaseLineInCell();
+    this.#writeClues();
+    this.#playField = new PlayField(
+      this,
+      this.#puzzleMatrix,
+      emptyBoardStateMatrix,
+      this.#boardSettings.cellSizePx,
+      this.#boardSettings.lineWidthPx
+    );
+    this.#addListeners();
+    this.#isInPlayMode = true;
   }
 }

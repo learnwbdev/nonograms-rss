@@ -30,4 +30,8 @@ export class Game {
   showSolution() {
     this.#gameBoard.drawSolution();
   }
+
+  resetGame() {
+    this.#gameBoard.resetGame();
+  }
 }
