@@ -1,8 +1,8 @@
 import { changeSoundsMuteValue } from "../sound/changeSoundsMuteValue";
 
 export const restoreSoundSettings = () => {
-  const defaultIsSoundOff = false;
-  const isSoundOff = localStorage.getItem("soundOff") ?? defaultIsSoundOff;
-  localStorage.setItem("soundOff", isSoundOff);
+  const defaultIsSoundOff = "false";
+  const isSoundOff = JSON.parse(localStorage.soundOff ?? defaultIsSoundOff);
+  localStorage.setItem("soundOff", JSON.stringify(isSoundOff));
   changeSoundsMuteValue(isSoundOff);
 };
