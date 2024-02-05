@@ -8,4 +8,5 @@ export const changeSoundsMuteValue = (isMuted) => {
       sound.muted = isMuted;
     });
   });
+  localStorage.setItem("soundOff", isMuted);
 };

@@ -1,6 +1,7 @@
 import { capitalizeWord } from "./utils/capitalizeWord";
 import { Game } from "./Game";
 import { changeSoundsMuteValue } from "./sound/changeSoundsMuteValue";
+import { restoreSavedSettings } from "./settings/restoreSavedSettings";
 
 export default class GameApp {
   #nonograms = [];
@@ -10,6 +11,7 @@ export default class GameApp {
   constructor(nonogramsData, canvasClassName) {
     this.#game = new Game(canvasClassName);
     this.#createNonogramsArray(nonogramsData);
+    restoreSavedSettings();
   }
 
   #getNonogramById(nonogramId) {
