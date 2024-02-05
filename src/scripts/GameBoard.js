@@ -71,7 +71,10 @@ export class GameBoard {
 
   #isStopWatchStarted = false;
 
-  constructor(className, stopWatch) {
+  #game;
+
+  constructor(className, stopWatch, game) {
+    this.#game = game;
     this.#canvasNode = createGameBoardCanvas(className);
     this.#canvasContext = this.#canvasNode.getContext("2d");
     this.#stopWatch = stopWatch;
@@ -260,5 +263,9 @@ export class GameBoard {
     this.#addListeners();
     this.#isInPlayMode = true;
     this.#stopWatch.initialize(false, 0);
+  }
+
+  addLatestWin() {
+    this.#game.addLatestWin();
   }
 }

@@ -2,14 +2,16 @@ import { capitalizeWord } from "./utils/capitalizeWord";
 import { Game } from "./Game";
 import { changeSoundsMuteValue } from "./sound/changeSoundsMuteValue";
 import { restoreSavedSettings } from "./settings/restoreSavedSettings";
+import { createLatestWinsNodes } from "./layout/latest-wins/createLatestWinsNodes";
 
 export default class GameApp {
   #nonograms = [];
 
   #game;
 
-  constructor(nonogramsData, canvasClassName) {
-    this.#game = new Game(canvasClassName);
+  constructor(nonogramsData, canvasClassName, stopWatchClassName) {
+    const latestWinsNodes = createLatestWinsNodes();
+    this.#game = new Game(canvasClassName, stopWatchClassName, latestWinsNodes);
     this.#createNonogramsArray(nonogramsData);
     restoreSavedSettings();
   }

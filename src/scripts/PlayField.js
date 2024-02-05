@@ -50,7 +50,7 @@ export class PlayField {
   #handleWinGame() {
     playSoundOnWin();
     this.#stopWatch.stop();
-    // TODO: show message
+    this.#gameBoard.addLatestWin();
     console.log("Win!");
   }
 

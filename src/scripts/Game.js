@@ -2,6 +2,8 @@ import { decodePuzzle } from "./game/decodePuzzle";
 import { formPuzzleClues } from "./game/formPuzzleClues";
 import { GameBoard } from "./GameBoard";
 import { StopWatch } from "./StopWatch";
+import { addLatestWin } from "./latest-wins/addLatestWin";
+import { updateLatestWinsNodes } from "./layout/latest-wins/updateLatestWinsNodes";
 
 export class Game {
   #nonogram = {};
@@ -12,9 +14,12 @@ export class Game {
 
   #stopWatch;
 
-  constructor(canvasClassName, stopWatchClassName) {
+  #latestWinsNodes;
+
+  constructor(canvasClassName, stopWatchClassName, latestWinsNodes) {
     this.#stopWatch = new StopWatch(stopWatchClassName);
-    this.#gameBoard = new GameBoard(canvasClassName, this.#stopWatch);
+    this.#gameBoard = new GameBoard(canvasClassName, this.#stopWatch, this);
+    this.#latestWinsNodes = latestWinsNodes;
   }
 
   setNonogram(nonogram) {
@@ -35,5 +40,16 @@ export class Game {
 
   resetGame() {
     this.#gameBoard.resetGame();
+  }
+
+  addLatestWin() {
+    addLatestWin(
+      this.#nonogram.id,
+      this.#nonogram.nameWithSize,
+      this.#nonogram.level,
+      this.#stopWatch.getTimeFormatted(),
+      this.#stopWatch.getTimeInSeconds()
+    );
+    updateLatestWinsNodes(this.#latestWinsNodes);
   }
 }
