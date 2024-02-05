@@ -5,6 +5,7 @@ import {
   getStateAfterSubAction,
 } from "./cell/changeState";
 import { getDeltaForNewState } from "./cell/getDeltaForNewState";
+import { playSoundOnStateChange } from "./cell/playSoundOnStateChange";
 
 export class Cell {
   #xLeft;
@@ -57,13 +58,13 @@ export class Cell {
       default:
         break;
     }
+    playSoundOnStateChange(newState);
     const stateDelta = this.#changeState(
       newState,
       canvasContext,
       boardSettings,
       board
     );
-    // TODO: play sound effect
     return { newState, stateDelta };
   }
 }
