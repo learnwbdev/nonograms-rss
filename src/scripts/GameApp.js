@@ -12,16 +12,11 @@ export default class GameApp {
     this.#createNonogramsArray(nonogramsData);
   }
 
-  changeGameToPuzzle(nonogramId) {
-    const nonogram = this.#getNonogramById(nonogramId);
-    this.#game.setNonogram(nonogram);
-  }
-
   #getNonogramById(nonogramId) {
     return this.#nonograms[nonogramId];
   }
 
-  getRandomNonogramId() {
+  #getRandomNonogramId() {
     const randomId = Math.floor(Math.random() * this.#nonograms.length);
     return randomId;
   }
@@ -52,8 +47,18 @@ export default class GameApp {
     return nonogramsList;
   }
 
+  changeGameToPuzzle(nonogramId) {
+    const nonogram = this.#getNonogramById(nonogramId);
+    this.#game.setNonogram(nonogram);
+  }
+
   showSolution() {
     this.#game.showSolution();
+  }
+
+  setRandomPuzzle() {
+    const nonogramId = this.#getRandomNonogramId;
+    this.changeGameToPuzzle(nonogramId);
   }
 
   static turnOffSoundEffects() {
