@@ -3,6 +3,7 @@ import { countSumCellsForPlayField } from "./play-field/countSumCellsForPlayFiel
 import { countFilledCellsInPuzzle } from "./play-field/countFilledCellsInPuzzle";
 import { initializeBoardStateMatrix } from "./play-field/initializeBoardStateMatrix";
 import { isEmptyBoardStateMatrix } from "./play-field/isEmptyBoardStateMatrix";
+import { playSoundOnWin } from "./play-field/playSoundOnWin";
 
 export class PlayField {
   #gameBoard;
@@ -44,6 +45,7 @@ export class PlayField {
   }
 
   #handleWinGame() {
+    playSoundOnWin();
     // TODO: show message
     console.log("Win!", this.#numFilledCellsPuzzle, this.#sumCellsPlayField);
   }
