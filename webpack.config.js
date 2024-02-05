@@ -38,7 +38,7 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(png|svg|jpg|jpeg|gif|ogg|mp3|wav)$/i,
         type: "asset/resource",
       },
       {
@@ -74,10 +74,6 @@ module.exports = {
         {
           from: path.resolve("src/assets/images/favicon"),
           to: path.resolve("dist/assets/images/favicon"),
-        },
-        {
-          from: path.resolve("src/assets/sounds"),
-          to: path.resolve("dist/assets/sounds"),
         },
       ],
     }),
