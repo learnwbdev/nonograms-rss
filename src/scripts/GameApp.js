@@ -61,7 +61,7 @@ export default class GameApp {
   }
 
   setRandomPuzzle() {
-    const nonogramId = this.#getRandomNonogramId;
+    const nonogramId = this.#getRandomNonogramId();
     this.changeGameToPuzzle(nonogramId);
   }
 
