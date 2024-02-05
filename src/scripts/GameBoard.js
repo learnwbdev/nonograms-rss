@@ -10,6 +10,7 @@ import { getCoordShiftByIndex } from "./game-board/getCoordShiftByIndex";
 import { getCellIndexByOneCoord } from "./game-board/getCellIndexByOneCoord";
 import { actionTypes } from "./actions/actionTypes";
 import { clearPlayField } from "./play-field/clearPlayField";
+import { createGameBoardCanvas } from "./layout/createGameBoardCanvas";
 
 export class GameBoard {
   #canvasNode;
@@ -67,11 +68,8 @@ export class GameBoard {
   #hasEventListeners = false;
 
   constructor(className) {
-    const canvasNode = document.createElement("canvas");
-    canvasNode.classList.add(className);
-    document.body.append(canvasNode);
-    this.#canvasNode = canvasNode;
-    this.#canvasContext = canvasNode.getContext("2d");
+    this.#canvasNode = createGameBoardCanvas(className);
+    this.#canvasContext = this.#canvasNode.getContext("2d");
   }
 
   #setTextStyleForClues() {
