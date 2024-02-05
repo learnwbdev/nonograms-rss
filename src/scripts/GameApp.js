@@ -1,21 +1,11 @@
 import { capitalizeWord } from "./utils/capitalizeWord";
 import { Game } from "./Game";
-import AudioResCross from "../assets/sounds/cross/cross.mp3";
-import AudioResEmpty from "../assets/sounds/empty/empty.mp3";
-import AudioResFilled from "../assets/sounds/filled/filled.mp3";
-import AudioResWin from "../assets/sounds/win/win.mp3";
+import { changeSoundsMuteValue } from "./sound/changeSoundsMuteValue";
 
 export default class GameApp {
   #nonograms = [];
 
   #game;
-
-  #soundEffects = {
-    cross: new Audio(AudioResCross),
-    filled: new Audio(AudioResFilled),
-    empty: new Audio(AudioResEmpty),
-    win: new Audio(AudioResWin),
-  };
 
   constructor(nonogramsData, canvasClassName) {
     this.#game = new Game(canvasClassName);
@@ -66,19 +56,13 @@ export default class GameApp {
     this.#game.showSolution();
   }
 
-  turnOffSoundEffects() {
-    const sounds = Object.values(this.#soundEffects);
-    sounds.forEach((soundIn) => {
-      const sound = soundIn;
-      sound.muted = true;
-    });
+  static turnOffSoundEffects() {
+    const isMuted = true;
+    changeSoundsMuteValue(isMuted);
   }
 
-  turnOnSoundEffects() {
-    const sounds = Object.values(this.#soundEffects);
-    sounds.forEach((soundIn) => {
-      const sound = soundIn;
-      sound.muted = false;
-    });
+  static turnOnSoundEffects() {
+    const isNotMuted = false;
+    changeSoundsMuteValue(isNotMuted);
   }
 }
