@@ -12,22 +12,25 @@ export const createSettingsButtons = () => {
   settingsSection.classList.add("settings");
 
   const soundBtn = document.createElement("button");
-  soundBtn.classList.add("settings__sound");
+  soundBtn.classList.add("settings__sound", "btn", "btn_round");
   const isSoundOff = getSoundMuteValue();
   soundBtn.innerHTML = isSoundOff ? VolOffSvg : VolUpSvg;
+  soundBtn.firstChild.classList.add("btn__icon");
   settingsSection.appendChild(soundBtn);
 
   const themeBtn = document.createElement("button");
-  themeBtn.classList.add("settings__theme");
+  themeBtn.classList.add("settings__theme", "btn", "btn_round");
   const themeName = getThemeName();
   themeBtn.innerHTML = themeName === "light" ? LightModeSvg : DarkModeSvg;
+  themeBtn.firstChild.classList.add("btn__icon");
   settingsSection.appendChild(themeBtn);
 
   const burgerBtn = document.createElement("button");
-  burgerBtn.classList.add("settings__burger");
+  burgerBtn.classList.add("settings__burger", "btn", "btn_round");
   // TODO: get state of the burger menu
   const isBurgerClose = true;
   burgerBtn.innerHTML = isBurgerClose ? BurgerToOpenSvg : BurgerToCloseSvg;
+  burgerBtn.firstChild.classList.add("btn__icon");
   settingsSection.appendChild(burgerBtn);
 
   document.body.appendChild(settingsSection);

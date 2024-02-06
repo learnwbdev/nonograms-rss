@@ -9,8 +9,6 @@ import VolUpSvg from "./assets/icons/volume_up.svg";
 import VolOffSvg from "./assets/icons/volume_off.svg";
 import LightModeSvg from "./assets/icons/light_mode.svg";
 import DarkModeSvg from "./assets/icons/dark_mode.svg";
-// import BurgerToOpenSvg from "./assets/icons/burger_to_open.svg";
-// import BurgerToCloseSvg from "./assets/icons/burger_to_close.svg";
 import { toggleTheme } from "./scripts/theme/toggleTheme";
 import { restoreSavedSettings } from "./scripts/settings/restoreSavedSettings";
 
@@ -18,7 +16,7 @@ document.body.classList.add("page");
 restoreSavedSettings();
 createHeader();
 const randomBtn = createRandomButton();
-const { soundBtn, themeBtn, burgerBtn } = createSettingsButtons();
+const { soundBtn, themeBtn } = createSettingsButtons();
 const canvasClassName = "gameboard";
 const stopWatchClassName = "stop-watch";
 const gameApp = new GameApp(NonogramsData, canvasClassName, stopWatchClassName);
@@ -27,14 +25,13 @@ randomBtn.addEventListener("click", gameApp.setRandomPuzzle.bind(gameApp));
 soundBtn.addEventListener("click", () => {
   gameApp.isSoundMuted = changeSoundsMuteValue(!gameApp.isSoundMuted);
   soundBtn.innerHTML = gameApp.isSoundMuted ? VolOffSvg : VolUpSvg;
+  soundBtn.firstChild.classList.add("btn__icon");
 });
 themeBtn.addEventListener("click", () => {
   gameApp.themeName = toggleTheme(gameApp.themeName);
   themeBtn.innerHTML =
     gameApp.themeName === "light" ? LightModeSvg : DarkModeSvg;
+  themeBtn.firstChild.classList.add("btn__icon");
 });
 
-console.log(burgerBtn);
-
-console.log(gameApp.getNonogramsList());
-gameApp.changeGameToPuzzle(1);
+gameApp.changeGameToPuzzle(0);
