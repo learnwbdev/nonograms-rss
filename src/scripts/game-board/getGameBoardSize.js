@@ -26,7 +26,7 @@ export const getGameBoardSize = (playAreaIn, cluesIn, boardSettings) => {
     return isDivider;
   };
 
-  clues.cols.dividers = countDividers(clues.cols.cells);
+  clues.cols.dividers = 1; // only for the first line (border)
   clues.cols.lines = clues.cols.cells - clues.cols.dividers;
   playArea.cols.dividers = countDividers(playArea.cols.cells);
   playArea.cols.lines = playArea.cols.cells - playArea.cols.dividers;
@@ -46,7 +46,7 @@ export const getGameBoardSize = (playAreaIn, cluesIn, boardSettings) => {
     clues.cols.lines * lineWidthPx +
     clues.cols.dividers * dividerWidthPx;
 
-  clues.rows.dividers = countDividers(clues.rows.cells);
+  clues.rows.dividers = 1; // only for the first line (border)
   clues.rows.lines = clues.rows.cells - clues.rows.dividers;
   playArea.rows.dividers = countDividers(playArea.rows.cells);
   playArea.rows.lines = playArea.rows.cells - playArea.rows.dividers;
