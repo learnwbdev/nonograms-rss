@@ -253,9 +253,6 @@ export class GameBoard {
       this.#boardSettings.emptyCellBg
     );
     this.#drawBoardGrid();
-    this.#setTextStyleForClues();
-    this.#setTextBaseLineInCell();
-    this.#writeClues();
     this.#playField = new PlayField(
       this,
       this.#puzzleMatrix,
