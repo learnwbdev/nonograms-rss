@@ -3,11 +3,22 @@ import { Game } from "./Game";
 import { createLatestWinsNodes } from "./layout/latest-wins/createLatestWinsNodes";
 import { getSoundMuteValue } from "./sound/getSoundMuteValue";
 import { getThemeName } from "./theme/getThemeName";
+import { createSelectGameSection } from "./layout/select-game/createSelectGameSection";
+import { createLevelOptions } from "./layout/select-game/createLevelOptions";
+import { createNonogramOptions } from "./layout/select-game/createNonogramOptions";
+import { handleLevelChange } from "./layout/select-game/handleLevelChange";
+import { handleNonogramChange } from "./layout/select-game/handleNonogramChange";
 
 export default class GameApp {
   #nonograms = [];
 
   #game;
+
+  #levelSelectNode;
+
+  #nonogramSelectNode;
+
+  #nonogramOptionNodesByLevel;
 
   isSoundMuted;
 
@@ -17,6 +28,8 @@ export default class GameApp {
     const latestWinsNodes = createLatestWinsNodes();
     this.#game = new Game(canvasClassName, stopWatchClassName, latestWinsNodes);
     this.#createNonogramsArray(nonogramsData);
+    this.#createSelectNodes();
+    this.#addSelectNodesEventListeners();
     this.isSoundMuted = getSoundMuteValue();
     this.themeName = getThemeName();
   }
@@ -42,6 +55,40 @@ export default class GameApp {
         nameWithSize,
         puzzle: nonogram.puzzle,
       };
+    });
+  }
+
+  #createSelectNodes() {
+    const nonogramsList = this.getNonogramsList();
+    const { levelSelect, nonogramSelect } = createSelectGameSection();
+    this.#levelSelectNode = levelSelect;
+    this.#nonogramSelectNode = nonogramSelect;
+    const levels = createLevelOptions(nonogramsList, this.#levelSelectNode);
+    this.#nonogramOptionNodesByLevel = createNonogramOptions(
+      levels,
+      nonogramsList
+    );
+    // add nonogram options for the initial level
+    handleLevelChange(
+      this.#levelSelectNode,
+      this.#nonogramSelectNode,
+      this.#nonogramOptionNodesByLevel,
+      this
+    );
+  }
+
+  #addSelectNodesEventListeners() {
+    this.#levelSelectNode.addEventListener("change", () => {
+      handleLevelChange(
+        this.#levelSelectNode,
+        this.#nonogramSelectNode,
+        this.#nonogramOptionNodesByLevel,
+        this
+      );
+    });
+
+    this.#nonogramSelectNode.addEventListener("change", () => {
+      handleNonogramChange(this.#nonogramSelectNode, this);
     });
   }
 
