@@ -2,7 +2,8 @@ export const handleLevelChange = (
   levelSelectNode,
   nonogramSelectNodeRef,
   nonogramOptionNodesByLevel,
-  gameApp
+  gameApp,
+  isTriggerChangeGameToPuzzle = true
 ) => {
   const nonogramSelectNode = nonogramSelectNodeRef;
   const defaultLevelIdx = 0;
@@ -13,5 +14,7 @@ export const handleLevelChange = (
   nonogramSelectNode.replaceChildren(...levelNonogramNodes);
   nonogramSelectNode.selectedIndex = 0;
   const nonogramValueId = nonogramSelectNode.options[0].value;
-  gameApp.changeGameToPuzzle(nonogramValueId);
+  if (isTriggerChangeGameToPuzzle) {
+    gameApp.changeGameToPuzzle(nonogramValueId);
+  }
 };
