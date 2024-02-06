@@ -1,7 +1,9 @@
+import { gameAppNode } from "./getGameAppNode";
+
 export const createStatusSection = () => {
   const statusSection = document.createElement("section");
   statusSection.classList.add("status");
-  document.body.append(statusSection);
+  gameAppNode.appendChild(statusSection);
 
   const stopWatchBlock = document.createElement("div");
   stopWatchBlock.classList.add("status__stop-watch", "stop-watch");

@@ -5,6 +5,7 @@ import { StopWatch } from "./StopWatch";
 import { addLatestWin } from "./latest-wins/addLatestWin";
 import { updateLatestWinsNodes } from "./layout/latest-wins/updateLatestWinsNodes";
 import { saveGameToLocalStorage } from "./game/saveGameToLocalStorage";
+import { gameAppNode } from "./layout/getGameAppNode";
 
 export class Game {
   #nonogram = {};
@@ -53,7 +54,7 @@ export class Game {
       // TODO: show message
       const saveMsg = document.createElement("h3");
       saveMsg.innerText = `Nothing to save: game is already solved or was not started`;
-      document.body.appendChild(saveMsg);
+      gameAppNode.appendChild(saveMsg);
       setTimeout(() => {
         saveMsg.remove();
       }, 3000);

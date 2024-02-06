@@ -1,7 +1,9 @@
+import { gameAppNode } from "./getGameAppNode";
+
 export const createActionButtonsSection = () => {
   const actionsSection = document.createElement("section");
   actionsSection.classList.add("actions");
-  document.body.appendChild(actionsSection);
+  gameAppNode.appendChild(actionsSection);
 
   const actionBtns = [
     "Reset game",

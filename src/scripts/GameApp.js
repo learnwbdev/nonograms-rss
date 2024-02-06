@@ -11,6 +11,7 @@ import { handleNonogramChange } from "./layout/select-game/handleNonogramChange"
 import { createStatusSection } from "./layout/createStatusSection";
 import { loadGameFromLocalStorage } from "./game/loadGameFromLocalStorage";
 import { decodePuzzle } from "./game/decodePuzzle";
+import { gameAppNode } from "./layout/getGameAppNode";
 
 export default class GameApp {
   #nonograms = [];
@@ -171,7 +172,7 @@ export default class GameApp {
     if (nonogramDataID === -1) {
       const loadMsg = document.createElement("h3");
       loadMsg.innerText = `Nothing to load: there is no saved games`;
-      document.body.appendChild(loadMsg);
+      gameAppNode.appendChild(loadMsg);
       setTimeout(() => {
         loadMsg.remove();
       }, 3000);

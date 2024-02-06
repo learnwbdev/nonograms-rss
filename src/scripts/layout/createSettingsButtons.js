@@ -6,10 +6,12 @@ import BurgerToOpenSvg from "../../assets/icons/burger_to_open.svg";
 import BurgerToCloseSvg from "../../assets/icons/burger_to_close.svg";
 import { getSoundMuteValue } from "../sound/getSoundMuteValue";
 import { getThemeName } from "../theme/getThemeName";
+import { gameAppNode } from "./getGameAppNode";
 
 export const createSettingsButtons = () => {
   const settingsSection = document.createElement("section");
   settingsSection.classList.add("settings");
+  gameAppNode.appendChild(settingsSection);
 
   const soundBtn = document.createElement("button");
   soundBtn.classList.add("settings__sound", "btn", "btn_round");
@@ -35,8 +37,6 @@ export const createSettingsButtons = () => {
   burgerBtn.innerHTML = isBurgerClose ? BurgerToOpenSvg : BurgerToCloseSvg;
   burgerBtn.firstChild.classList.add("btn__icon");
   settingsSection.appendChild(burgerBtn);
-
-  document.body.appendChild(settingsSection);
 
   return { soundBtn, themeBtn, burgerBtn };
 };

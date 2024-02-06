@@ -1,8 +1,10 @@
 import { updateLatestWinsNodes } from "./updateLatestWinsNodes";
+import { gameAppNode } from "../getGameAppNode";
 
 export const createLatestWinsNodes = () => {
   const latestWinsSection = document.createElement("section");
   latestWinsSection.classList.add("latest-wins");
+  gameAppNode.appendChild(latestWinsSection);
 
   const latestWinsHeader = document.createElement("h2");
   latestWinsHeader.classList.add("latest-wins__header");
@@ -29,7 +31,6 @@ export const createLatestWinsNodes = () => {
     latestWinsSection.appendChild(winsLine);
   }
 
-  document.body.appendChild(latestWinsSection);
   updateLatestWinsNodes(winsListNodes);
 
   return winsListNodes;

@@ -1,7 +1,9 @@
+import { gameAppNode } from "../getGameAppNode";
+
 export const createSelectGameSection = () => {
   const selectGameSection = document.createElement("section");
   selectGameSection.classList.add("select-game");
-  document.body.appendChild(selectGameSection);
+  gameAppNode.appendChild(selectGameSection);
 
   const divLevelBlock = document.createElement("div");
   divLevelBlock.classList.add("select-game__level", "level");

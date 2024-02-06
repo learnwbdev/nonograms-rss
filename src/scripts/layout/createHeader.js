@@ -1,8 +1,11 @@
 import LogoSvg from "../../assets/images/logo.svg";
 
+import { gameAppNode } from "./getGameAppNode";
+
 export const createHeader = () => {
   const header = document.createElement("header");
   header.classList.add("header");
+  gameAppNode.appendChild(header);
 
   const divLogo = document.createElement("div");
   divLogo.classList.add("header__logo");
@@ -15,5 +18,4 @@ export const createHeader = () => {
   title.classList.add("header__title");
   title.innerText = "Nonograms";
   header.appendChild(title);
-  document.body.appendChild(header);
 };

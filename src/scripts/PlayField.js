@@ -6,6 +6,7 @@ import { isEmptyBoardStateMatrix } from "./play-field/isEmptyBoardStateMatrix";
 import { playSoundOnWin } from "./play-field/playSoundOnWin";
 import { encodePuzzle } from "./game/encodePuzzle";
 import { changeCellsContentToBoardState } from "./cell/changeCellsContentToBoardState";
+import { gameAppNode } from "./layout/getGameAppNode";
 
 export class PlayField {
   #gameBoard;
@@ -65,7 +66,7 @@ export class PlayField {
     // TODO: show win message
     const winMsg = document.createElement("h4");
     winMsg.innerText = `Great! You have solved the nonogram in ${timeInSec} seconds!`;
-    document.body.appendChild(winMsg);
+    gameAppNode.appendChild(winMsg);
     setTimeout(() => {
       winMsg.remove();
     }, 10000);
