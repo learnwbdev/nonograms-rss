@@ -50,6 +50,7 @@ export class PlayField {
   #handleWinGame() {
     playSoundOnWin();
     this.#stopWatch.stop();
+    this.#gameBoard.blockPlayField();
     this.#gameBoard.addLatestWin();
     const timeInSec = this.#stopWatch.getTimeInSeconds();
     // TODO: show win message

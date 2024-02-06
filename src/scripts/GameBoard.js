@@ -270,4 +270,8 @@ export class GameBoard {
   addLatestWin() {
     this.#game.addLatestWin();
   }
+
+  blockPlayField() {
+    this.#isInPlayMode = false;
+  }
 }
