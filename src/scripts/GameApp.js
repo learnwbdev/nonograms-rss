@@ -149,8 +149,7 @@ export default class GameApp {
   }
 
   saveGame() {
-    // TODO: save current game
-    console.log("save game: ", this.#game);
+    this.#game.saveGame();
   }
 
   loadGame() {

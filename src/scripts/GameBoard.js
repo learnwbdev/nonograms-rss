@@ -274,4 +274,12 @@ export class GameBoard {
   blockPlayField() {
     this.#isInPlayMode = false;
   }
+
+  getBoardStateString() {
+    const isActiveGame = this.#isInPlayMode && this.#isStopWatchStarted;
+    const boardStateStr = isActiveGame
+      ? this.#playField.getBoardStateString()
+      : "";
+    return boardStateStr;
+  }
 }

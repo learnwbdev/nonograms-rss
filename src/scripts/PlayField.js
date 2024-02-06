@@ -4,6 +4,7 @@ import { countFilledCellsInPuzzle } from "./play-field/countFilledCellsInPuzzle"
 import { initializeBoardStateMatrix } from "./play-field/initializeBoardStateMatrix";
 import { isEmptyBoardStateMatrix } from "./play-field/isEmptyBoardStateMatrix";
 import { playSoundOnWin } from "./play-field/playSoundOnWin";
+import { encodePuzzle } from "./game/encodePuzzle";
 
 export class PlayField {
   #gameBoard;
@@ -84,5 +85,9 @@ export class PlayField {
     if (this.#sumCellsPlayField === this.#numFilledCellsPuzzle) {
       this.#handleWinGame();
     }
+  }
+
+  getBoardStateString() {
+    return encodePuzzle(this.#boardStateMatrix);
   }
 }
