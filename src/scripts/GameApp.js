@@ -97,6 +97,27 @@ export default class GameApp {
     });
   }
 
+  #changeNonogramSelectionById(nonogramId) {
+    const nonogram = this.#getNonogramById(nonogramId);
+    const levelOptions = [...this.#levelSelectNode.options];
+    const isSoughtForLevel = (option) => option.value === nonogram.level;
+    const levelSelectIdx = levelOptions.findIndex(isSoughtForLevel);
+    this.#levelSelectNode.selectedIndex = levelSelectIdx;
+    handleLevelChange(
+      this.#levelSelectNode,
+      this.#nonogramSelectNode,
+      this.#nonogramOptionNodesByLevel,
+      this
+    );
+
+    const nonogramsOptions = [...this.#nonogramSelectNode.options];
+    const isSoughtForNonogram = (option) =>
+      option.value === nonogram.id.toString();
+    const nonogramSelectIdx = nonogramsOptions.findIndex(isSoughtForNonogram);
+    this.#nonogramSelectNode.selectedIndex = nonogramSelectIdx;
+    this.#nonogramSelectNode.dispatchEvent(new Event("change"));
+  }
+
   getNonogramsList() {
     const nonogramsList = this.#nonograms.map(
       ({ id, level, nameWithSize }) => ({
@@ -120,7 +141,7 @@ export default class GameApp {
 
   setRandomPuzzle() {
     const nonogramId = this.#getRandomNonogramId();
-    this.changeGameToPuzzle(nonogramId);
+    this.#changeNonogramSelectionById(nonogramId);
   }
 
   resetGame() {
