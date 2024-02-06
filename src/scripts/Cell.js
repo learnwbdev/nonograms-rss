@@ -65,6 +65,6 @@ export class Cell {
       boardSettings,
       board
     );
-    return { newState, stateDelta };
+    return { newCellState: newState, stateDelta };
   }
 }
