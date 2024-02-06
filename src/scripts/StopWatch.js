@@ -1,4 +1,3 @@
-import { createStopWatchNode } from "./layout/createStopWatchNode";
 import { formatTimeInSec } from "./stop-watch/formatTimeInSec";
 
 export class StopWatch {
@@ -12,8 +11,8 @@ export class StopWatch {
 
   #stopWatchNode;
 
-  constructor(className) {
-    this.#stopWatchNode = createStopWatchNode(className);
+  constructor(stopWatchNode) {
+    this.#stopWatchNode = stopWatchNode;
   }
 
   updateTimeInSec() {

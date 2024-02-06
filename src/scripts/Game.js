@@ -16,8 +16,8 @@ export class Game {
 
   #latestWinsNodes;
 
-  constructor(stopWatchClassName, latestWinsNodes) {
-    this.#stopWatch = new StopWatch(stopWatchClassName);
+  constructor(stopWatchNode, latestWinsNodes) {
+    this.#stopWatch = new StopWatch(stopWatchNode);
     this.#gameBoard = new GameBoard(this.#stopWatch, this);
     this.#latestWinsNodes = latestWinsNodes;
   }

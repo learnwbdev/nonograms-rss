@@ -8,6 +8,7 @@ import { createLevelOptions } from "./layout/select-game/createLevelOptions";
 import { createNonogramOptions } from "./layout/select-game/createNonogramOptions";
 import { handleLevelChange } from "./layout/select-game/handleLevelChange";
 import { handleNonogramChange } from "./layout/select-game/handleNonogramChange";
+import { createStatusSection } from "./layout/createStatusSection";
 
 export default class GameApp {
   #nonograms = [];
@@ -20,14 +21,18 @@ export default class GameApp {
 
   #nonogramOptionNodesByLevel;
 
+  #nonogramNameNode;
+
   isSoundMuted;
 
   themeName;
 
-  constructor(nonogramsData, stopWatchClassName) {
-    const latestWinsNodes = createLatestWinsNodes();
-    this.#game = new Game(stopWatchClassName, latestWinsNodes);
+  constructor(nonogramsData) {
     this.#createNonogramsArray(nonogramsData);
+    const { stopWatchNode, nonogramNameNode } = createStatusSection();
+    this.#nonogramNameNode = nonogramNameNode;
+    const latestWinsNodes = createLatestWinsNodes();
+    this.#game = new Game(stopWatchNode, latestWinsNodes);
     this.#createSelectNodes();
     this.#addSelectNodesEventListeners();
     this.isSoundMuted = getSoundMuteValue();
@@ -106,6 +111,7 @@ export default class GameApp {
   changeGameToPuzzle(nonogramId) {
     const nonogram = this.#getNonogramById(nonogramId);
     this.#game.setNonogram(nonogram);
+    this.#nonogramNameNode.innerText = nonogram.nameWithSize;
   }
 
   showSolution() {
