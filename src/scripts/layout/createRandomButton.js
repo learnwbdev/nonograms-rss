@@ -3,6 +3,7 @@ export const createRandomButton = () => {
   randomSection.classList.add("random");
   const randomBtn = document.createElement("button");
   randomBtn.classList.add("random__btn", "btn");
+  randomBtn.type = "button";
   randomBtn.innerText = "Random game";
   randomSection.appendChild(randomBtn);
   document.body.appendChild(randomSection);
