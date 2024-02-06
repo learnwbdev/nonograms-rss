@@ -1,19 +1,24 @@
 import { capitalizeWord } from "./utils/capitalizeWord";
 import { Game } from "./Game";
-import { changeSoundsMuteValue } from "./sound/changeSoundsMuteValue";
-import { restoreSavedSettings } from "./settings/restoreSavedSettings";
 import { createLatestWinsNodes } from "./layout/latest-wins/createLatestWinsNodes";
+import { getSoundMuteValue } from "./sound/getSoundMuteValue";
+import { getThemeName } from "./theme/getThemeName";
 
 export default class GameApp {
   #nonograms = [];
 
   #game;
 
+  isSoundMuted;
+
+  themeName;
+
   constructor(nonogramsData, canvasClassName, stopWatchClassName) {
     const latestWinsNodes = createLatestWinsNodes();
     this.#game = new Game(canvasClassName, stopWatchClassName, latestWinsNodes);
     this.#createNonogramsArray(nonogramsData);
-    restoreSavedSettings();
+    this.isSoundMuted = getSoundMuteValue();
+    this.themeName = getThemeName();
   }
 
   #getNonogramById(nonogramId) {
@@ -67,15 +72,5 @@ export default class GameApp {
 
   resetGame() {
     this.#game.resetGame();
-  }
-
-  static turnOffSoundEffects() {
-    const isMuted = true;
-    changeSoundsMuteValue(isMuted);
-  }
-
-  static turnOnSoundEffects() {
-    const isNotMuted = false;
-    changeSoundsMuteValue(isNotMuted);
   }
 }
