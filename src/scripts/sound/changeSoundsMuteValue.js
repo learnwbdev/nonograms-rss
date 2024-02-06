@@ -9,4 +9,6 @@ export const changeSoundsMuteValue = (isMuted) => {
     });
   });
   localStorage.setItem("soundOff", JSON.stringify(isMuted));
+
+  return isMuted;
 };
