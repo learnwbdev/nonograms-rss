@@ -11,6 +11,7 @@ import LightModeSvg from "./assets/icons/light_mode.svg";
 import DarkModeSvg from "./assets/icons/dark_mode.svg";
 import { toggleTheme } from "./scripts/theme/toggleTheme";
 import { restoreSavedSettings } from "./scripts/settings/restoreSavedSettings";
+import { createActionButtonsSection } from "./scripts/layout/createActionButtonsSection";
 
 document.body.classList.add("page");
 restoreSavedSettings();
@@ -18,8 +19,14 @@ createHeader();
 const randomBtn = createRandomButton();
 const { soundBtn, themeBtn } = createSettingsButtons();
 const gameApp = new GameApp(NonogramsData);
+const [resetBtn, saveBtn, loadBtn, solutionBtn] = createActionButtonsSection();
 
 randomBtn.addEventListener("click", gameApp.setRandomPuzzle.bind(gameApp));
+resetBtn.addEventListener("click", gameApp.resetGame.bind(gameApp));
+saveBtn.addEventListener("click", gameApp.saveGame.bind(gameApp));
+loadBtn.addEventListener("click", gameApp.loadGame.bind(gameApp));
+solutionBtn.addEventListener("click", gameApp.showSolution.bind(gameApp));
+
 soundBtn.addEventListener("click", () => {
   gameApp.isSoundMuted = changeSoundsMuteValue(!gameApp.isSoundMuted);
   soundBtn.innerHTML = gameApp.isSoundMuted ? VolOffSvg : VolUpSvg;

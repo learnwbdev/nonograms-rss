@@ -147,4 +147,14 @@ export default class GameApp {
   resetGame() {
     this.#game.resetGame();
   }
+
+  saveGame() {
+    // TODO: save current game
+    console.log("save game: ", this.#game);
+  }
+
+  loadGame() {
+    // TODO: load game from local storage
+    console.log("load game: ", this.#game);
+  }
 }
