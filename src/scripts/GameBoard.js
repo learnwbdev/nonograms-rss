@@ -235,6 +235,7 @@ export class GameBoard {
 
   drawSolution() {
     this.#isInPlayMode = false;
+    this.#stopWatch.stop();
     this.#stopWatch.initialize(false, 0);
     this.#isStopWatchStarted = false;
     drawSolution(

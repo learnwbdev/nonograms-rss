@@ -23,7 +23,6 @@ export class StopWatch {
   }
 
   initialize(isRestart, elapsedTimeSecSaved) {
-    clearInterval(this.#intervalId);
     const elapsedTimeSecZero = 0;
     this.#elapsedTimeSec = isRestart ? elapsedTimeSecSaved : elapsedTimeSecZero;
     this.#stopWatchNode.innerText = this.getTimeFormatted();
