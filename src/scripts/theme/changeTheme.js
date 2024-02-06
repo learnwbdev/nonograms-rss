@@ -5,4 +5,5 @@ export const changeTheme = (themeName) => {
   const classNameForTheme = `theme-${themeName}`;
   body.classList.remove(...themeList);
   body.classList.add(classNameForTheme);
+  localStorage.setItem("theme", themeName);
 };
