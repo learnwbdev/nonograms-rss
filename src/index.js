@@ -38,5 +38,3 @@ themeBtn.addEventListener("click", () => {
     gameApp.themeName === "light" ? LightModeSvg : DarkModeSvg;
   themeBtn.firstChild.classList.add("btn__icon");
 });
-
-gameApp.changeGameToPuzzle(0);
