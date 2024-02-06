@@ -23,15 +23,15 @@ export class Game {
     this.#latestWinsNodes = latestWinsNodes;
   }
 
-  setNonogram(nonogram) {
+  setNonogram(nonogram, boardStateMatrix, timeSec) {
     this.#nonogram = nonogram;
     const puzzleMatrix = decodePuzzle(this.#nonogram.puzzle);
     const { rowsAllClues, colsAllClues } = formPuzzleClues(puzzleMatrix);
-    const boardStateMatrix = [];
     this.#gameBoard.drawBoard(
       puzzleMatrix,
       { rowsAllClues, colsAllClues },
-      boardStateMatrix
+      boardStateMatrix,
+      timeSec
     );
   }
 

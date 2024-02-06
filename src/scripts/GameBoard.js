@@ -211,7 +211,7 @@ export class GameBoard {
     );
   }
 
-  drawBoard(puzzleMatrix, puzzleClues, boardStateMatrix) {
+  drawBoard(puzzleMatrix, puzzleClues, boardStateMatrix, timeSec) {
     this.#puzzleMatrix = puzzleMatrix;
     this.#puzzleClues = puzzleClues;
     this.#setCountRowsCols();
@@ -229,7 +229,8 @@ export class GameBoard {
     this.#addListeners();
     this.#isInPlayMode = true;
     this.#stopWatch.stop();
-    this.#stopWatch.initialize(false, 0);
+    const isRestartTimer = timeSec > 0;
+    this.#stopWatch.initialize(isRestartTimer, timeSec);
     this.#isStopWatchStarted = false;
   }
 
@@ -281,5 +282,17 @@ export class GameBoard {
       ? this.#playField.getBoardStateString()
       : "";
     return boardStateStr;
+  }
+
+  getBoardSettings() {
+    return this.#boardSettings;
+  }
+
+  getBoard() {
+    return this.#board;
+  }
+
+  getCanvasContext() {
+    return this.#canvasContext;
   }
 }

@@ -9,6 +9,8 @@ import { createNonogramOptions } from "./layout/select-game/createNonogramOption
 import { handleLevelChange } from "./layout/select-game/handleLevelChange";
 import { handleNonogramChange } from "./layout/select-game/handleNonogramChange";
 import { createStatusSection } from "./layout/createStatusSection";
+import { loadGameFromLocalStorage } from "./game/loadGameFromLocalStorage";
+import { decodePuzzle } from "./game/decodePuzzle";
 
 export default class GameApp {
   #nonograms = [];
@@ -97,7 +99,11 @@ export default class GameApp {
     });
   }
 
-  #changeNonogramSelectionById(nonogramId) {
+  #changeNonogramSelectionById(
+    nonogramId,
+    isTriggerChangeEvent = true,
+    isTriggerChangeGameToPuzzle = true
+  ) {
     const nonogram = this.#getNonogramById(nonogramId);
     const levelOptions = [...this.#levelSelectNode.options];
     const isSoughtForLevel = (option) => option.value === nonogram.level;
@@ -107,7 +113,8 @@ export default class GameApp {
       this.#levelSelectNode,
       this.#nonogramSelectNode,
       this.#nonogramOptionNodesByLevel,
-      this
+      this,
+      isTriggerChangeGameToPuzzle
     );
 
     const nonogramsOptions = [...this.#nonogramSelectNode.options];
@@ -115,7 +122,9 @@ export default class GameApp {
       option.value === nonogram.id.toString();
     const nonogramSelectIdx = nonogramsOptions.findIndex(isSoughtForNonogram);
     this.#nonogramSelectNode.selectedIndex = nonogramSelectIdx;
-    this.#nonogramSelectNode.dispatchEvent(new Event("change"));
+    if (isTriggerChangeEvent) {
+      this.#nonogramSelectNode.dispatchEvent(new Event("change"));
+    }
   }
 
   getNonogramsList() {
@@ -129,9 +138,9 @@ export default class GameApp {
     return nonogramsList;
   }
 
-  changeGameToPuzzle(nonogramId) {
+  changeGameToPuzzle(nonogramId, boardStateMatrix = [], timeSec = 0) {
     const nonogram = this.#getNonogramById(nonogramId);
-    this.#game.setNonogram(nonogram);
+    this.#game.setNonogram(nonogram, boardStateMatrix, timeSec);
     this.#nonogramNameNode.innerText = nonogram.nameWithSize;
   }
 
@@ -153,7 +162,26 @@ export default class GameApp {
   }
 
   loadGame() {
-    // TODO: load game from local storage
-    console.log("load game: ", this.#game);
+    const {
+      nonogramId: nonogramDataID,
+      timeSec,
+      boardStateStr,
+    } = loadGameFromLocalStorage();
+    // TODO: show message (no saved games)
+    if (nonogramDataID === -1) {
+      const loadMsg = document.createElement("h3");
+      loadMsg.innerText = `Nothing to load: there is no saved games`;
+      document.body.appendChild(loadMsg);
+      setTimeout(() => {
+        loadMsg.remove();
+      }, 3000);
+      return;
+    }
+    // TODO: check if id exists
+    // TODO: find nonogramId in GameApp by id = nonogramDataID
+    const nonogramId = nonogramDataID;
+    const boardStateMatrix = decodePuzzle(boardStateStr);
+    this.#changeNonogramSelectionById(nonogramId, false, false);
+    this.changeGameToPuzzle(nonogramId, boardStateMatrix, timeSec);
   }
 }

@@ -5,6 +5,7 @@ import { initializeBoardStateMatrix } from "./play-field/initializeBoardStateMat
 import { isEmptyBoardStateMatrix } from "./play-field/isEmptyBoardStateMatrix";
 import { playSoundOnWin } from "./play-field/playSoundOnWin";
 import { encodePuzzle } from "./game/encodePuzzle";
+import { changeCellsContentToBoardState } from "./cell/changeCellsContentToBoardState";
 
 export class PlayField {
   #gameBoard;
@@ -37,6 +38,9 @@ export class PlayField {
       );
     }
     this.#constructBoardCells();
+    if (!isEmptyBoardStateMatrix(boardStateMatrix)) {
+      this.#changeCellsContentToBoardState();
+    }
   }
 
   #constructBoardCells() {
@@ -46,6 +50,10 @@ export class PlayField {
       this.#puzzleMatrix,
       this.#boardStateMatrix
     );
+  }
+
+  #changeCellsContentToBoardState() {
+    changeCellsContentToBoardState(this.#gameBoard, this.#boardCells);
   }
 
   #handleWinGame() {
