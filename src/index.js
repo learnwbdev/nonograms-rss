@@ -17,9 +17,8 @@ restoreSavedSettings();
 createHeader();
 const randomBtn = createRandomButton();
 const { soundBtn, themeBtn } = createSettingsButtons();
-const canvasClassName = "gameboard";
 const stopWatchClassName = "stop-watch";
-const gameApp = new GameApp(NonogramsData, canvasClassName, stopWatchClassName);
+const gameApp = new GameApp(NonogramsData, stopWatchClassName);
 
 randomBtn.addEventListener("click", gameApp.setRandomPuzzle.bind(gameApp));
 soundBtn.addEventListener("click", () => {

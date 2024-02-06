@@ -73,9 +73,9 @@ export class GameBoard {
 
   #game;
 
-  constructor(className, stopWatch, game) {
+  constructor(stopWatch, game) {
     this.#game = game;
-    this.#canvasNode = createGameBoardCanvas(className);
+    this.#canvasNode = createGameBoardCanvas();
     this.#canvasContext = this.#canvasNode.getContext("2d");
     this.#stopWatch = stopWatch;
   }

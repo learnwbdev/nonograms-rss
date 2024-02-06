@@ -24,9 +24,9 @@ export default class GameApp {
 
   themeName;
 
-  constructor(nonogramsData, canvasClassName, stopWatchClassName) {
+  constructor(nonogramsData, stopWatchClassName) {
     const latestWinsNodes = createLatestWinsNodes();
-    this.#game = new Game(canvasClassName, stopWatchClassName, latestWinsNodes);
+    this.#game = new Game(stopWatchClassName, latestWinsNodes);
     this.#createNonogramsArray(nonogramsData);
     this.#createSelectNodes();
     this.#addSelectNodesEventListeners();
