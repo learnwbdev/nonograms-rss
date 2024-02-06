@@ -51,7 +51,14 @@ export class PlayField {
     playSoundOnWin();
     this.#stopWatch.stop();
     this.#gameBoard.addLatestWin();
-    console.log("Win!");
+    const timeInSec = this.#stopWatch.getTimeInSeconds();
+    // TODO: show win message
+    const winMsg = document.createElement("h4");
+    winMsg.innerText = `Great! You have solved the nonogram in ${timeInSec} seconds!`;
+    document.body.appendChild(winMsg);
+    setTimeout(() => {
+      winMsg.remove();
+    }, 10000);
   }
 
   handleAction(
