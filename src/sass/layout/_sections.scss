@@ -1,0 +1,33 @@
+.header {
+  grid-area: header;
+}
+
+.random {
+  grid-area: random;
+}
+
+.settings {
+  grid-area: settings;
+}
+
+.select-game {
+  grid-area: select;
+}
+
+.status {
+  grid-area: status;
+}
+
+.latest-wins {
+  grid-area: score;
+}
+
+.gameboard {
+  grid-area: canvas;
+}
+
+.actions {
+  grid-area: actions;
+}
+
+
