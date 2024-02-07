@@ -47,7 +47,7 @@ export class GameBoard {
     lineWidthPx: 1,
     dividerWidthPx: 2,
     divideNumCells: 5, // number of cells in one group/block
-    cluesFont: "normal 500 14px 'El Messiri', 'Verdana', sans-serif",
+    cluesFont: "normal 500 16px 'El Messiri', 'Verdana', sans-serif",
     cluesColor: "#1c1c19",
     lineColor: "#939189",
     dividerColor: "#767672",
