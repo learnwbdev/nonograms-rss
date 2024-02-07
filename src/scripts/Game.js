@@ -54,7 +54,7 @@ export class Game {
       saveGameToLocalStorage(nonogramId, timeSec, boardStateStr);
     } else {
       const messageText =
-        "Nothing to save: game is already solved or was not started";
+        "Nothing to save: the nonogram has already been solved or has not yet been started";
       this.#gameApp.showDialog(messageText);
     }
   }
