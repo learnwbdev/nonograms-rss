@@ -47,12 +47,19 @@ export class PlayField {
   }
 
   #constructBoardCells() {
-    // TODO: check that size of puzzleMatrix and boardStateMatrix is the same
-    this.#boardCells = constructBoardCells(
-      this.#gameBoard,
-      this.#puzzleMatrix,
-      this.#boardStateMatrix
-    );
+    if (
+      this.#puzzleMatrix.length !== this.#boardStateMatrix.length ||
+      this.#puzzleMatrix.length[0] !== this.#boardStateMatrix.length[0]
+    ) {
+      const messageText = "Sorry, the saved nonogram could not be loaded";
+      this.#gameApp.showDialog(messageText);
+    } else {
+      this.#boardCells = constructBoardCells(
+        this.#gameBoard,
+        this.#puzzleMatrix,
+        this.#boardStateMatrix
+      );
+    }
   }
 
   #changeCellsContentToBoardState() {
