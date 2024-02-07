@@ -1,7 +1,6 @@
 import { countPuzzleRowsCols } from "./game-board/countPuzzleRowsCols";
 import { drawGameBoardGrid } from "./game-board/drawGameBoardGrid";
 import { getGameBoardSize } from "./game-board/getGameBoardSize";
-import { getTextBaseLineInCellPx } from "./game-board/getTextBaseLineInCellPx";
 import { setTextStyleForClues } from "./game-board/setTextStyleForClues";
 import { drawSolution } from "./game-board/drawSolution";
 import { writeClues } from "./game-board/writeClues";
@@ -11,6 +10,7 @@ import { getCellIndexByOneCoord } from "./game-board/getCellIndexByOneCoord";
 import { actionTypes } from "./actions/actionTypes";
 import { clearPlayField } from "./play-field/clearPlayField";
 import { createGameBoardCanvas } from "./layout/createGameBoardCanvas";
+import { getTextVertDeltaPx } from "./game-board/getTextVertDeltaPx";
 
 export class GameBoard {
   #canvasNode;
@@ -27,7 +27,7 @@ export class GameBoard {
     cluesWidth: 0,
     cluesHeight: 0,
     blockSize: 0, // block - five cells with one divider and four lines if `divideNumCells` = 5
-    textBaseLine: 0, // text baseline in a cell
+    textVertDeltaPx: 0, // delta to vertically align text for a given font, calculates for a given font
   };
 
   #playArea = {
@@ -87,11 +87,8 @@ export class GameBoard {
     setTextStyleForClues(this.#canvasContext, this.#boardSettings);
   }
 
-  #setTextBaseLineInCell() {
-    this.#board.textBaseLine = getTextBaseLineInCellPx(
-      this.#canvasContext,
-      this.#boardSettings.cellSizePx
-    );
+  #setTextVertDelta() {
+    this.#board.textVertDeltaPx = getTextVertDeltaPx(this.#canvasContext);
   }
 
   #setCountRowsCols() {
@@ -222,7 +219,7 @@ export class GameBoard {
     this.#setBoardSize();
     this.#drawBoardGrid();
     this.#setTextStyleForClues();
-    this.#setTextBaseLineInCell();
+    this.#setTextVertDelta();
     this.#writeClues();
     this.#playField = new PlayField(
       this,

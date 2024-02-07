@@ -10,8 +10,10 @@ export const writeClues = (
   const ctx = canvasContextRef;
   const { cellSizePx, lineWidthPx, dividerWidthPx, divideNumCells } =
     boardSettings;
+  const { textVertDeltaPx } = board;
   const { colsAllClues, rowsAllClues } = puzzleClues;
   const cellWithLinePx = cellSizePx + lineWidthPx;
+  const cellHalfSizePx = cellSizePx / 2;
 
   const getCoordShiftWithDividers = (cellIndexInPuzzle) => {
     return getCoordShiftByIndex(
@@ -31,12 +33,12 @@ export const writeClues = (
 
   const writeClueInCell = (cell, clueText) => {
     const clueTextStr = clueText.toString();
-    const textMetrics = ctx.measureText(clueTextStr);
-    const textWidth = textMetrics.width;
-    const textStartShiftPx = Math.floor((cellSizePx - textWidth) / 2);
-    const textXStart = cell.x + textStartShiftPx;
-    const textYBaseline = cell.y + board.textBaseLine;
-    ctx.fillText(clueText, textXStart, textYBaseline);
+    const xCellCenter = cell.x + cellHalfSizePx;
+    const yCellCenter = cell.y + cellHalfSizePx;
+    // x, y - centers the text around the given x, y coordinates,
+    //        because canvas was configured with textBaseline = "middle", textAlign = "center"
+    // textVertDeltaPx - delta vertical correction for a given font (based on the font metrics)
+    ctx.fillText(clueTextStr, xCellCenter, yCellCenter + textVertDeltaPx);
   };
 
   const writeRowClues = () => {
