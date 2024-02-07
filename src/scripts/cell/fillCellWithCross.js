@@ -2,7 +2,6 @@ export const fillCellWithCross = (
   canvasContextRef,
   cell,
   cellSizePx,
-  emptyCellBg,
   cross
 ) => {
   const ctx = canvasContextRef;
@@ -19,8 +18,7 @@ export const fillCellWithCross = (
     leftBtm: [cell.x + cross.margin, cell.y + cellSizePx - cross.margin],
   };
 
-  ctx.fillStyle = emptyCellBg;
-  ctx.fillRect(cell.x, cell.y, cellSizePx, cellSizePx);
+  ctx.clearRect(cell.x, cell.y, cellSizePx, cellSizePx);
 
   ctx.beginPath();
   ctx.moveTo(...crossPoints.leftTop);

@@ -1,5 +1,6 @@
 import { EMPTY, FILLED } from "../cell/cellStates";
 import { fillCellWithColor } from "../cell/fillCellWithColor";
+import { makeCellTransparent } from "../cell/makeCellTransparent";
 import { getCoordShiftByIndex } from "./getCoordShiftByIndex";
 
 export const drawSolution = (
@@ -37,12 +38,12 @@ export const drawSolution = (
       switch (value) {
         case FILLED:
           fillColor = boardSettings.filledCellBg;
+          fillCellWithColor(ctx, cell, cellSizePx, fillColor);
           break;
         case EMPTY:
         default:
-          fillColor = boardSettings.emptyCellBg;
+          makeCellTransparent(ctx, cell, cellSizePx);
       }
-      fillCellWithColor(ctx, cell, cellSizePx, fillColor);
     }
   }
 };

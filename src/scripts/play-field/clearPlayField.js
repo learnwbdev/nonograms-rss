@@ -1,5 +1,4 @@
-export const clearPlayField = (canvasContext, playFieldPath2D, emptyCellBg) => {
+export const clearPlayField = (canvasContext, playAreaRect) => {
   const ctx = canvasContext;
-  ctx.fillStyle = emptyCellBg;
-  ctx.fill(playFieldPath2D);
+  ctx.clearRect(...playAreaRect);
 };

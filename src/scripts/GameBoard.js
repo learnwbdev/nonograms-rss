@@ -34,6 +34,7 @@ export class GameBoard {
     rows: 0,
     cols: 0,
     rectPath: new Path2D(), // path of the playArea to detect mouse events
+    rect: [], // rect coordinates for clearRect (x, y, width, height)
   };
 
   #clues = {
@@ -47,13 +48,12 @@ export class GameBoard {
     dividerWidthPx: 2,
     divideNumCells: 5, // number of cells in one group/block
     cluesFont: "500 14px sans-serif",
-    cluesColor: "black",
-    lineColor: "dimgray",
-    dividerColor: "gray",
-    emptyCellBg: "white",
-    filledCellBg: "black",
+    cluesColor: "#1c1c19",
+    lineColor: "#939189",
+    dividerColor: "#767672",
+    filledCellBg: "#1c1c19",
     cross: {
-      color: "black",
+      color: "#1c1c19",
       lineWidth: 1,
       margin: 1, // margin from the cell border
     },
@@ -125,6 +125,7 @@ export class GameBoard {
     const playFieldPath2D = new Path2D();
     playFieldPath2D.rect(xLeft, yTop, width, height);
     this.#playArea.rectPath = playFieldPath2D;
+    this.#playArea.rect = [xLeft, yTop, width, height];
   }
 
   #drawBoardGrid() {
@@ -249,11 +250,7 @@ export class GameBoard {
 
   resetGame() {
     const emptyBoardStateMatrix = [];
-    clearPlayField(
-      this.#canvasContext,
-      this.#playArea.rectPath,
-      this.#boardSettings.emptyCellBg
-    );
+    clearPlayField(this.#canvasContext, this.#playArea.rect);
     this.#drawBoardGrid();
     this.#playField = new PlayField(
       this,
