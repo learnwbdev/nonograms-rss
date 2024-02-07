@@ -1,0 +1,44 @@
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--color-canvas-bg);
+  color: var(--color-logo-square);
+  height: 3rem;
+  border-radius: 40px;
+  font-size: 1.125rem;
+  line-height: 1.125rem;
+  padding: 0.5rem 1rem;
+  box-sizing: border-box;
+  vertical-align: middle;
+  box-shadow: var(--box-shadow-btn);
+  border: 2px solid var(--color-btn-border);
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  .btn:hover {
+    background-color: var(--color-btn-hover);
+  }
+}
+
+.btn_round {
+  padding: 0;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 999px;
+}
+
+.btn__icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: var(--color-logo-square);
+}
+
+@media only screen and (min-width: 768px) {
+  .btn {
+    font-size: 1.25rem;
+    line-height: 1.25rem;
+  }
+}
