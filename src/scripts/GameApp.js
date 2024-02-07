@@ -11,7 +11,8 @@ import { handleNonogramChange } from "./layout/select-game/handleNonogramChange"
 import { createStatusSection } from "./layout/createStatusSection";
 import { loadGameFromLocalStorage } from "./game/loadGameFromLocalStorage";
 import { decodePuzzle } from "./game/decodePuzzle";
-import { gameAppNode } from "./layout/getGameAppNode";
+import { createMessageDialog } from "./layout/message/createMessageDialog";
+import { showMessageDialog } from "./layout/message/showMessageDialog";
 
 export default class GameApp {
   #nonograms = [];
@@ -26,6 +27,8 @@ export default class GameApp {
 
   #nonogramNameNode;
 
+  #message = {};
+
   isSoundMuted;
 
   themeName;
@@ -38,7 +41,10 @@ export default class GameApp {
     this.#nonogramNameNode = nonogramNameNode;
     const { latestWinsSection, latestWinsNodes } = createLatestWinsNodes();
     this.latestWinsSection = latestWinsSection;
-    this.#game = new Game(stopWatchNode, latestWinsNodes);
+    const { messageDialog, msgText } = createMessageDialog();
+    this.#message.dialogNode = messageDialog;
+    this.#message.textNode = msgText;
+    this.#game = new Game(stopWatchNode, latestWinsNodes, this);
     this.#createSelectNodes();
     this.#addSelectNodesEventListeners();
     this.isSoundMuted = getSoundMuteValue();
@@ -152,6 +158,10 @@ export default class GameApp {
     this.#game.showSolution();
   }
 
+  showDialog(messageText) {
+    showMessageDialog(this.#message, messageText);
+  }
+
   setRandomPuzzle() {
     const nonogramId = this.#getRandomNonogramId();
     this.#changeNonogramSelectionById(nonogramId);
@@ -171,21 +181,16 @@ export default class GameApp {
       timeSec,
       boardStateStr,
     } = loadGameFromLocalStorage();
-    // TODO: show message (no saved games)
     if (nonogramDataID === -1) {
-      const loadMsg = document.createElement("h3");
-      loadMsg.innerText = `Nothing to load: there is no saved games`;
-      gameAppNode.appendChild(loadMsg);
-      setTimeout(() => {
-        loadMsg.remove();
-      }, 3000);
-      return;
+      const messageText = "Nothing to load: there is no saved games";
+      this.showDialog(messageText);
+    } else {
+      // TODO: check if id exists
+      // TODO: find nonogramId in GameApp by id = nonogramDataID
+      const nonogramId = nonogramDataID;
+      const boardStateMatrix = decodePuzzle(boardStateStr);
+      this.#changeNonogramSelectionById(nonogramId, false, false);
+      this.changeGameToPuzzle(nonogramId, boardStateMatrix, timeSec);
     }
-    // TODO: check if id exists
-    // TODO: find nonogramId in GameApp by id = nonogramDataID
-    const nonogramId = nonogramDataID;
-    const boardStateMatrix = decodePuzzle(boardStateStr);
-    this.#changeNonogramSelectionById(nonogramId, false, false);
-    this.changeGameToPuzzle(nonogramId, boardStateMatrix, timeSec);
   }
 }

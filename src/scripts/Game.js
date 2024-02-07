@@ -5,7 +5,6 @@ import { StopWatch } from "./StopWatch";
 import { addLatestWin } from "./latest-wins/addLatestWin";
 import { updateLatestWinsNodes } from "./layout/latest-wins/updateLatestWinsNodes";
 import { saveGameToLocalStorage } from "./game/saveGameToLocalStorage";
-import { gameAppNode } from "./layout/getGameAppNode";
 
 export class Game {
   #nonogram = {};
@@ -18,10 +17,13 @@ export class Game {
 
   #latestWinsNodes;
 
-  constructor(stopWatchNode, latestWinsNodes) {
+  #gameApp;
+
+  constructor(stopWatchNode, latestWinsNodes, gameApp) {
     this.#stopWatch = new StopWatch(stopWatchNode);
-    this.#gameBoard = new GameBoard(this.#stopWatch, this);
+    this.#gameBoard = new GameBoard(this.#stopWatch, this, gameApp);
     this.#latestWinsNodes = latestWinsNodes;
+    this.#gameApp = gameApp;
   }
 
   setNonogram(nonogram, boardStateMatrix, timeSec) {
@@ -51,13 +53,9 @@ export class Game {
     if (boardStateStr) {
       saveGameToLocalStorage(nonogramId, timeSec, boardStateStr);
     } else {
-      // TODO: show message
-      const saveMsg = document.createElement("h3");
-      saveMsg.innerText = `Nothing to save: game is already solved or was not started`;
-      gameAppNode.appendChild(saveMsg);
-      setTimeout(() => {
-        saveMsg.remove();
-      }, 3000);
+      const messageText =
+        "Nothing to save: game is already solved or was not started";
+      this.#gameApp.showDialog(messageText);
     }
   }
 

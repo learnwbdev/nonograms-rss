@@ -6,7 +6,6 @@ import { isEmptyBoardStateMatrix } from "./play-field/isEmptyBoardStateMatrix";
 import { playSoundOnWin } from "./play-field/playSoundOnWin";
 import { encodePuzzle } from "./game/encodePuzzle";
 import { changeCellsContentToBoardState } from "./cell/changeCellsContentToBoardState";
-import { gameAppNode } from "./layout/getGameAppNode";
 
 export class PlayField {
   #gameBoard;
@@ -23,9 +22,12 @@ export class PlayField {
 
   #stopWatch;
 
-  constructor(gameBoard, puzzleMatrix, boardStateMatrix, stopWatch) {
+  #gameApp;
+
+  constructor(gameBoard, puzzleMatrix, boardStateMatrix, stopWatch, gameApp) {
     this.#gameBoard = gameBoard;
     this.#stopWatch = stopWatch;
+    this.#gameApp = gameApp;
     this.#puzzleMatrix = puzzleMatrix;
     this.#numFilledCellsPuzzle = countFilledCellsInPuzzle(puzzleMatrix);
     if (isEmptyBoardStateMatrix(boardStateMatrix)) {
@@ -63,13 +65,8 @@ export class PlayField {
     this.#gameBoard.blockPlayField();
     this.#gameBoard.addLatestWin();
     const timeInSec = this.#stopWatch.getTimeInSeconds();
-    // TODO: show win message
-    const winMsg = document.createElement("h4");
-    winMsg.innerText = `Great! You have solved the nonogram in ${timeInSec} seconds!`;
-    gameAppNode.appendChild(winMsg);
-    setTimeout(() => {
-      winMsg.remove();
-    }, 10000);
+    const winMessageText = `Great! You have solved the nonogram in ${timeInSec} seconds!`;
+    this.#gameApp.showDialog(winMessageText);
   }
 
   handleAction(

@@ -73,11 +73,14 @@ export class GameBoard {
 
   #game;
 
-  constructor(stopWatch, game) {
+  #gameApp;
+
+  constructor(stopWatch, game, gameApp) {
     this.#game = game;
     this.#canvasNode = createGameBoardCanvas();
     this.#canvasContext = this.#canvasNode.getContext("2d");
     this.#stopWatch = stopWatch;
+    this.#gameApp = gameApp;
   }
 
   #setTextStyleForClues() {
@@ -225,7 +228,8 @@ export class GameBoard {
       this,
       puzzleMatrix,
       boardStateMatrix,
-      this.#stopWatch
+      this.#stopWatch,
+      this.#gameApp
     );
     this.#addListeners();
     this.#isInPlayMode = true;
@@ -256,7 +260,8 @@ export class GameBoard {
       this,
       this.#puzzleMatrix,
       emptyBoardStateMatrix,
-      this.#stopWatch
+      this.#stopWatch,
+      this.#gameApp
     );
     this.#addListeners();
     this.#isInPlayMode = true;
