@@ -1,0 +1,27 @@
+.select-game {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  width: 100%;
+  align-items: start;
+  justify-items: stretch;
+  max-height: fit-content;
+}
+
+.select-game__item {
+  padding-left: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .label {
+    font-size: 1.125rem;
+  }
+
+  .select {
+    font-size: 1.125rem;
+  }
+}
+
