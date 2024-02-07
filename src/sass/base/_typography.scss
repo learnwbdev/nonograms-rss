@@ -14,7 +14,15 @@
   font-style: normal;
 }
 
-html {
+@font-face {
+  font-family: 'Chivo Mono';
+  src: url('../assets/fonts/ChivoMono-Medium.woff2') format('woff2'),
+       url('../assets/fonts/ChivoMono-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+html, button {
   font-family: "El Messiri", "Verdana", sans-serif;
   font-optical-sizing: auto;
   font-weight: 600;
