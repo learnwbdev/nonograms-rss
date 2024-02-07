@@ -18,6 +18,8 @@ restoreSavedSettings();
 createHeader();
 const randomBtn = createRandomButton();
 const { soundBtn, themeBtn } = createSettingsButtons();
+
+await document.fonts.ready;
 const gameApp = new GameApp(NonogramsData);
 const [resetBtn, saveBtn, loadBtn, solutionBtn] = createActionButtonsSection();
 
