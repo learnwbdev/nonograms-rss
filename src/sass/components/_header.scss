@@ -1,0 +1,51 @@
+.header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.header__logo, .logo {
+  width: 2rem;
+  height: 2rem;
+}
+
+.logo__bg {
+  fill: var(--color-logo-bg);
+}
+
+.logo__line {
+  fill: var(--color-logo-line);
+}
+
+.logo__square{
+  fill: var(--color-logo-square);
+}
+
+.header__title {
+  font-size: 2rem;
+  margin: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .header {
+    gap: 0.75rem;
+  }
+
+  .header__logo, .logo {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .header__title {
+    font-size: 2.5rem;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .header {
+    margin-top: 2.5rem;
+  }
+}
