@@ -1,0 +1,20 @@
+// pseudo-element for dialog backdrop
+::backdrop {
+  background-color: gray;
+  opacity: 0.75;
+}
+
+.message[open] {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  border-radius: 10px;
+  border-color: var(--color-btn-border);
+}
+
+.message__close {
+  width: 50%;
+}
