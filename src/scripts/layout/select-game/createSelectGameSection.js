@@ -6,7 +6,7 @@ export const createSelectGameSection = () => {
   gameAppNode.appendChild(selectGameSection);
 
   const divLevelBlock = document.createElement("div");
-  divLevelBlock.classList.add("select-game__level", "level");
+  divLevelBlock.classList.add("select-game__item", "level");
   selectGameSection.appendChild(divLevelBlock);
 
   const levelLabel = document.createElement("label");
@@ -22,7 +22,7 @@ export const createSelectGameSection = () => {
   divLevelBlock.appendChild(levelSelect);
 
   const divNonogramBlock = document.createElement("div");
-  divNonogramBlock.classList.add("select-game__nonogram", "nonogram");
+  divNonogramBlock.classList.add("select-game__item", "nonogram");
   selectGameSection.appendChild(divNonogramBlock);
 
   const nonogramLabel = document.createElement("label");

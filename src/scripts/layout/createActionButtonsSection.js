@@ -22,5 +22,9 @@ export const createActionButtonsSection = () => {
     actionBtnsNodes.push(actionBtn);
   }
 
+  const [, , loadBtn, solutionBtn] = actionBtnsNodes;
+  loadBtn.classList.add("actions__btn_hidden-mobile");
+  solutionBtn.classList.add("actions__btn_hidden-mobile");
+
   return actionBtnsNodes;
 };
