@@ -1,0 +1,15 @@
+.latest-wins {
+  display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .latest-wins {
+    display: grid;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .latest-wins {
+    margin-top: 1rem;
+  }
+}
