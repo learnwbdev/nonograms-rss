@@ -1,0 +1,11 @@
+.gameboard {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.gameboard__canvas {
+  box-shadow: var(--color-canvas-shadow) 1.95px 1.95px 2.6px;
+}
