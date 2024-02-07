@@ -190,15 +190,21 @@ export default class GameApp {
       boardStateStr,
     } = loadGameFromLocalStorage();
     if (nonogramDataID === -1) {
-      const messageText = "Nothing to load: there is no saved games";
+      const messageText = "Nothing to load: no saved game";
       this.showDialog(messageText);
     } else {
-      // TODO: check if id exists
-      // TODO: find nonogramId in GameApp by id = nonogramDataID
-      const nonogramId = nonogramDataID;
-      const boardStateMatrix = decodePuzzle(boardStateStr);
-      this.#changeNonogramSelectionById(nonogramId, false, false);
-      this.changeGameToPuzzle(nonogramId, boardStateMatrix, timeSec);
+      const dataIdToId = new Map(
+        this.#nonograms.map((nonogram, idx) => [nonogram.id, idx])
+      );
+      if (dataIdToId.has(nonogramDataID)) {
+        const nonogramId = dataIdToId.get(nonogramDataID);
+        const boardStateMatrix = decodePuzzle(boardStateStr);
+        this.#changeNonogramSelectionById(nonogramId, false, false);
+        this.changeGameToPuzzle(nonogramId, boardStateMatrix, timeSec);
+      } else {
+        const messageText = "Sorry, the saved nonogram was not found";
+        this.showDialog(messageText);
+      }
     }
   }
 }
