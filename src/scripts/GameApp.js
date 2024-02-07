@@ -30,11 +30,14 @@ export default class GameApp {
 
   themeName;
 
+  latestWinsSection;
+
   constructor(nonogramsData) {
     this.#createNonogramsArray(nonogramsData);
     const { stopWatchNode, nonogramNameNode } = createStatusSection();
     this.#nonogramNameNode = nonogramNameNode;
-    const latestWinsNodes = createLatestWinsNodes();
+    const { latestWinsSection, latestWinsNodes } = createLatestWinsNodes();
+    this.latestWinsSection = latestWinsSection;
     this.#game = new Game(stopWatchNode, latestWinsNodes);
     this.#createSelectNodes();
     this.#addSelectNodesEventListeners();

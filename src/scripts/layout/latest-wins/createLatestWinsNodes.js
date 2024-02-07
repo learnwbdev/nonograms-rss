@@ -33,5 +33,5 @@ export const createLatestWinsNodes = () => {
 
   updateLatestWinsNodes(winsListNodes);
 
-  return winsListNodes;
+  return { latestWinsSection, latestWinsNodes: winsListNodes };
 };
