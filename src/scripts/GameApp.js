@@ -17,6 +17,8 @@ import { showMessageDialog } from "./layout/message/showMessageDialog";
 export default class GameApp {
   #nonograms = [];
 
+  #activeNonogramId;
+
   #game;
 
   #levelSelectNode;
@@ -135,6 +137,8 @@ export default class GameApp {
     if (isTriggerChangeEvent) {
       this.#nonogramSelectNode.dispatchEvent(new Event("change"));
     }
+
+    this.#activeNonogramId = nonogramId;
   }
 
   getNonogramsList() {
@@ -163,8 +167,12 @@ export default class GameApp {
   }
 
   setRandomPuzzle() {
-    const nonogramId = this.#getRandomNonogramId();
-    this.#changeNonogramSelectionById(nonogramId);
+    const currNonogramId = this.#activeNonogramId;
+    let newNonogramId = currNonogramId;
+    while (newNonogramId === currNonogramId) {
+      newNonogramId = this.#getRandomNonogramId();
+    }
+    this.#changeNonogramSelectionById(newNonogramId);
   }
 
   resetGame() {
