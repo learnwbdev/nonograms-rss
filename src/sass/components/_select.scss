@@ -1,0 +1,17 @@
+.select {
+  background-color: var(--color-canvas-bg);
+  cursor: pointer;
+  padding-left: 0.5rem;
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--color-btn-border);
+  border-radius: 5px;
+}
+
+.label {
+  padding-left: 0.5rem;
+}
+
+.select__option {
+  cursor: pointer;
+}
