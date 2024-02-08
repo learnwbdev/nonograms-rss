@@ -20,6 +20,7 @@ import { closeHamburgerMenu } from "./scripts/layout/hamburger/closeHamburgerMen
 import { createDrawerOverlayLatestWins } from "./scripts/layout/hamburger/createDrawerOverlayLatestWins";
 import { createDrawerOverlayHamburg } from "./scripts/layout/hamburger/createDrawerOverlayHamburg";
 import { handleHamburgBtnClick } from "./scripts/layout/hamburger/handleHamburgBtnClick";
+import { hideHamburgerLatestWins } from "./scripts/layout/hamburger/hideHamburgerLatestWins";
 
 document.body.classList.add("page");
 // create in this order for the correct order in the stacking context
@@ -93,4 +94,15 @@ burgerBtn.addEventListener("click", () => {
     BurgerToOpenSvg,
     BurgerToCloseSvg
   );
+});
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth >= 768) {
+    hideHamburgerLatestWins(
+      hambSection,
+      gameApp.latestWinsSection,
+      drawerOverlayLatestWins
+    );
+    closeHamburger();
+  }
 });
