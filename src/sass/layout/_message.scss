@@ -14,6 +14,7 @@
   border-radius: 10px;
   border-color: var(--color-btn-border);
   max-width: 80vw;
+  min-width: min(50vw, 16rem);
 }
 
 .message__close {
