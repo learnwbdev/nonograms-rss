@@ -50,13 +50,16 @@ export class Game {
     const nonogramId = this.#nonogram.id;
     const timeSec = this.#stopWatch.getTimeInSeconds();
     const boardStateStr = this.#gameBoard.getBoardStateString();
+    let messageText;
     if (boardStateStr) {
+      this.#gameBoard.pauseStopWatch();
       saveGameToLocalStorage(nonogramId, timeSec, boardStateStr);
+      messageText = "The game has been saved";
     } else {
-      const messageText =
+      messageText =
         "Nothing to save: the nonogram has already been solved or has not yet been started";
-      this.#gameApp.showDialog(messageText);
     }
+    this.#gameApp.showDialog(messageText);
   }
 
   addLatestWin() {

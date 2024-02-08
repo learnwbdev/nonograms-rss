@@ -294,4 +294,9 @@ export class GameBoard {
   getCanvasContext() {
     return this.#canvasContext;
   }
+
+  pauseStopWatch() {
+    this.#stopWatch.stop();
+    this.#isStopWatchStarted = false;
+  }
 }
