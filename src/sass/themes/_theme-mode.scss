@@ -2,7 +2,6 @@
   --color-light: #fdfcff;
   --color-logo-line: #1a1a1a;
   --color-logo-square: #4d4d4d;
-  --color-btn-hover: #f3dfc1;
 
   --box-shadow-btn: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
@@ -12,10 +11,13 @@
   --color-text: #1a1c1e;
   --color-logo-bg: #fdfcff;
   --color-canvas-shadow: rgb(0 0 0 / 0.15);
+  --color-border: #767672;
   --color-btn-border: #767672;
+  --color-btn-hover: #f3dfc1;
+  --color-btn-text: #4d4d4d;
+  --color-btn-hover-text: #4d4d4d;
 
   --color-canvas-bg: #fffcf7;
-
 }
 
 .theme-dark {
@@ -23,7 +25,12 @@
   --color-text: #e3e2e6;
   --color-logo-bg: #e3e2e6;
   --color-canvas-shadow: rgb(243 223 193 / 0.15);
-  --color-btn-border: #f3dfc1;
+  --color-border: #f3dfc1;
+  --color-btn-border: transparent;
+  --color-btn-hover: #ac8d5b;
+  --color-btn-hover: #6d5c3f;
+  --color-btn-text: #4d4d4d;
+  --color-btn-hover-text: #e3e2e6;
 
   --color-canvas-bg: #f3dfc1;
 }

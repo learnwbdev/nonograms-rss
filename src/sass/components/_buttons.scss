@@ -4,7 +4,7 @@
   align-items: center;
   text-align: center;
   background-color: var(--color-canvas-bg);
-  color: var(--color-logo-square);
+  color: var(--color-btn-text);
   height: 3rem;
   border-radius: 40px;
   font-size: 1.125rem;
@@ -22,12 +22,12 @@
   width: 3rem;
   height: 3rem;
   border-radius: 999px;
+  fill: var(--color-logo-square);
 }
 
 .btn__icon {
   width: 1.5rem;
   height: 1.5rem;
-  fill: var(--color-logo-square);
 }
 
 .btn_text {
@@ -49,12 +49,17 @@
 
 @media (hover: hover) {
   .btn:hover {
+    color: var(--color-btn-hover-text);
     background-color: var(--color-btn-hover);
   }
 
   .btn_text:hover {
     background-color: transparent;
-    text-decoration: underline solid var(--color-btn-border) 2px;
+    text-decoration: underline solid var(--color-border) 2px;
     text-underline-position: under;
+  }
+
+  .btn_round:hover {
+    fill: var(--color-btn-hover-text);
   }
 }
