@@ -17,12 +17,6 @@
   cursor: pointer;
 }
 
-@media (hover: hover) {
-  .btn:hover {
-    background-color: var(--color-btn-hover);
-  }
-}
-
 .btn_round {
   padding: 0;
   width: 3rem;
@@ -36,9 +30,31 @@
   fill: var(--color-logo-square);
 }
 
+.btn_text {
+  width: 12.5rem;
+  border: 2px solid transparent;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: transparent;
+  color: var(--color-text);
+  transition: text-decoration 0.3s ease;
+}
+
 @media only screen and (min-width: 768px) {
   .btn {
     font-size: 1.25rem;
     line-height: 1.25rem;
+  }
+}
+
+@media (hover: hover) {
+  .btn:hover {
+    background-color: var(--color-btn-hover);
+  }
+
+  .btn_text:hover {
+    background-color: transparent;
+    text-decoration: underline solid var(--color-btn-border) 2px;
+    text-underline-position: under;
   }
 }

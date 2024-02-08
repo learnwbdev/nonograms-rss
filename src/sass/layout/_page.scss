@@ -12,3 +12,7 @@ html {
   color: var(--color-text);
   user-select: none;
 }
+
+.no-scroll {
+  overflow-y: hidden;
+}

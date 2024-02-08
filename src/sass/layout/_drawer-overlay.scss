@@ -1,0 +1,31 @@
+.drawer-overlay {
+  background-color: var(--color-bg);
+  padding: 0 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+.drawer-overlay_show {
+  transform: translateX(0%);
+}
+
+.drawer-overlay_hamburg {
+  z-index: 5;
+}
+
+.drawer-overlay_wins {
+  z-index: 15;
+}
+
+@media only screen and (min-width: 768px) {
+  .drawer-overlay {
+    display: none;
+  }
+}

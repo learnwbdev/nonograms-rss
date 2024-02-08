@@ -1,5 +1,5 @@
 // pseudo-element for dialog backdrop
-::backdrop {
+.message::backdrop {
   background-color: gray;
   opacity: 0.75;
 }
@@ -13,6 +13,7 @@
   padding: 2rem;
   border-radius: 10px;
   border-color: var(--color-btn-border);
+  max-width: 80vw;
 }
 
 .message__close {
