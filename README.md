@@ -1,38 +1,49 @@
-# Nonograms
-a practice project for the RS School JavaScript/Front-end Course
+# Учебный-проект: "Nonograms Puzzle Game"
 
-## Task: [Nonograms](https://github.com/rolling-scopes-school/tasks/tree/master/tasks/nonograms)
+![Screenshot-Nonograms](https://github.com/learnwbdev/nonograms-rss/assets/138000021/2ab0fefc-185b-4d3f-b6f8-72e2165c14e0)
 
-### Game rules
+## 1. Описание
+Игра-головоломка "Nonograms" (японский кроссворд).<br>
+Цель игры - отгадать картинку по подсказкам из цифр.<br>
+[Описание игры в Википедии](https://ru.wikipedia.org/wiki/%D0%AF%D0%BF%D0%BE%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D0%BA%D1%80%D0%BE%D1%81%D1%81%D0%B2%D0%BE%D1%80%D0%B4)
 
-`Nonograms is a puzzle game to reveal a hidden picture by looking at the number clues. The clues are given at the top and left side of the grid. Each number in these clue defines a block of black cell. A number indicates an unbroken line of black cells, and they are in the same order as the lines. These puzzles are often black and white—describing a binary image—but they can also be colored.`
+Проект реализован в рамках курса [**&laquo;JavaScript/Front-end&raquo;**](https://rs.school/js/) от **The Rolling Scopes School**.
 
-**In the current task you have to implement only binary version of the game**
+#### 📄 Задание: [исходное задание от RS School](https://github.com/rolling-scopes-school/tasks/tree/master/tasks/nonograms)
 
-### Main functional requirements
+#### 🖥️ Деплой: [демо Nonograms](https://learnwbdev.github.io/nonograms-rss)
 
-`Basic (required):`
+## 2. Стек технологий
+![Иконка HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white&style=for-the-badge)
+![Иконка CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white&style=for-the-badge)
+![Иконка SASS](https://img.shields.io/badge/SASS-CC6699?logo=sass&logoColor=white&style=for-the-badge)
+![Иконка JavaScript](https://img.shields.io/badge/JavaScript-323330?logo=javascript&logoColor=F7DF1E&style=for-the-badge)
 
-- initially, `body` in the index.html file must be empty (only script tag is allowed), **all necessary elements are generated using JS**
-- the design should be adaptive (or responsive) from _(500px <= width)_. It is acceptable to change the appearance for the mobile version (for example, hide the buttons in the burger menu)
-- the default size of the frame is 5x5. The clues are given at the top and left side of the grid. The sequence of numbers must be logically arranged and help the player solve the nonogram
-- for game field: every 5 cells in a rows and columns should be divided by divider (bold line). For clues: every 5 cells in a **rows** should be divided by divider (for left clues); every 5 cells in a **columns** should be divided by divider (for top clues). Clues should be divided from game field by bold line.
-- a player is able to fill in a cell in the grid, using left mouse-click. On a click event, trigger the functionality of changing the color of the grid to dark (black). When player clicks on dark cell - it will change to empty (white).
-- end game when players fill all **black** cells correctly according to the clues. On a successful game solution, display "Great! You have solved the nonogram!" (in case you missed stop-watch implementation)
+## 3. Функционал
 
-`Advanced:`
+- **выбор уровня** *(**Easy**, **Medium**, **Hard**)*
+- **выбор нонограммы** для выбранного уровня
+- загрузка **случайной нонограммы** из списка доступных нонограмм по кнопке `Random game`
+- **игровое поле** с возможностью закрасить/очистить ячейку *(клик левой кнопкой мыши)*, пометить крестом пустую ячейку *(клик правой кнопкой мыши)*
+- **секундомер** для времени отгадывания нонограммы *(старт отсчета после первого нажатия на игровое поле)*
+- **перезапуск** текущей нонограммы по кнопке `Reset game`:
+   - *очистка поля*
+   - *сброс таймера*
+- **сохранение** отгадываемой нонограммы по кнопке `Save game`:
+   - *сохранение текущего состояния игрового поля*
+   - *сохранение прошедшего времени для секундомера*
+   - *сохраняется только состояние для одной нонограммы: перезаписывается предыдущая сохраненная нонограмма*
+- **загрузка сохраненной нонограммы** по кнопке `Continue last game`
+- отображение **решения** для текущей нонограммы по кнопке `Solution`
+- отображение **результатов для последних 5** отгаданных нонограмм (таблица `High Score Table`)
+- переключение между **светлой и темной темами**
+- **отключение/включение звуков** для игры
+- гамбургер-меню
 
-- the game should have at least 5 templates for easy level (5x5). Players should be able to choose the picture they wish to solve, possibly through a list of items. You might implement it in two ways: either make a list of possible templates with images(solved puzzles) or using template names (without pictures), or using both images and names. User should also easy understand what is the level of image.
-- a player is able to fill in a cell in the grid changing the color of the grid to crossed-cell(X) using right mouse-click. Context menu should not appear. Filling empty cells with X is not obligatory to win the game.
-- the game can be restarted (reset) without reloading the page (for example, by clicking on button `Reset game`). After clicking the button the level of game and template (picture) should not be changed - it means that only filled cells will be reset. Otherwise the player can change game template or game level (for example, you could implement menu with options) without reloading the page.
-- display the game duration in format XX:XX, stop-watch will start after first click on field (not on clues). "Great! You have solved the nonogram in ## seconds!" is displayed after winning.
-- the game should include sound effects for events such as mark a cell as black, flagging a cell as X, flagging a cell as empty and win game.
-- the staging of the game is saved (for example, using localStorage) by clicking on button "Save game", so that when player clicks on button "continue last game", he can continue playing from where he left off.
+## 4. Установка и запуск проекта в локальном репозитории
 
-`Additional (to get extra points):`
+1. `git clone https://github.com/learnwbdev/nonograms-rss.git` - клонировать репозиторий (HTTPS) на локальный компьютер
 
-- dark/light themes of the game. Changing the theme implies a change in the entire color scheme of the application, including the background color, cell colors, counters, buttons etc.
-- implement three levels of difficulty in the game: easy (5x5), medium (10x10), and hard (15x15). Each level should vary in the size of the game board and the complexity of the main template (pictures).
-- the latest 5 win results are saved in the high score table. Table is sorted by time of the game using XX:XX format (for example, using LocalStorage). Every line should include: solved puzzle (either naming, or picture, or both); difficulty; stop-watch result.
-- implement button "random game". When player clicks on button - the random template appears (both template and level must be chosen randomly by algorithm).
-- implement "Solution" button near the field. When player clicks the button - the field will be filled in cells with right solution. Usage of the button doesn't mean winning and will not be recorded into winning table.
+2. `cd nonograms-rss` - перейти в каталог проекта
+3. `pnpm i` или `npm i` - установить зависимости для проекта
+4. `pnpm dev:open` или `npm run dev:open` - запустить **Webpack Dev Server** для просмотра страницы в браузере *(страница автоматически откроется в браузере по умолчанию)*
